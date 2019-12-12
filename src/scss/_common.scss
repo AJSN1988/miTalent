@@ -1,0 +1,244 @@
+// Fonts
+
+@font-face {
+    font-family: "NunitoBold";
+    src: url("../assets/fonts/Nunito-Bold.ttf");
+    // font-weight: 300;
+    // font-style: normal;
+}
+@font-face {
+    font-family: "NunitoExtraBold";
+    src: url("../assets/fonts/Nunito-ExtraBold.ttf");
+    // font-weight: 400;
+    // font-style: normal;
+}
+// @font-face {
+//     font-family: "OpenSans";
+//     src: url("../assets/fonts/OpenSans-SemiBold.ttf");
+//     font-weight: 600;
+//     font-style: normal;
+// }
+// @font-face {
+//     font-family: "OpenSans";
+//     src: url("../assets/fonts/OpenSans-Bold.ttf");
+//     font-weight: 700;
+//     font-style: normal;
+// }
+
+
+// 1. Colors
+
+$textColor: #29292c;
+$hoveredLink: #b4d3d3;
+$mainButtonColor: #b4d3d3;
+
+@mixin mainBackground {
+    background: rgb(181,212,212);
+    background: linear-gradient(270deg, rgba(181,212,212,1) 0%, rgba(216,230,230,1) 100%);
+}
+
+
+// 2 Adaptive breakpoints
+
+// @mixin mobile-landscape {
+//     @media screen and (orientation: landscape) and (max-height: 599px) {
+//         @content;
+//     }
+// }
+
+// @mixin screen-376 {
+//     @media screen and (max-width: 376px) {
+//         @content;
+//     }
+// }
+
+// @mixin screen-499 {
+//     @media screen and (max-width: 499px) {
+//         @content;
+//     }
+// }
+
+// @mixin screen-599 {
+//     @media screen and (max-width: 599px) {
+//         @content;
+//     }
+// }
+
+// @mixin screen-639 {
+//     @media screen and (max-width: 639px) {
+//         @content;
+//     }
+// }
+
+// @mixin screen-767 {
+//     @media screen and (max-width: 767px) {
+//         @content;
+//     }
+// }
+
+@mixin screen-899 {
+    @media screen and (max-width: 899px) {
+        @content;
+    }
+}
+
+// @mixin screen-1199 {
+//     @media screen and (max-width: 1199px) {
+//         @content;
+//     }
+// }
+
+// @mixin screen-min-1200 {
+//     @media screen and (min-width: 1200px) {
+//         @content;
+//     }
+// }
+
+// @mixin screen-768-1199 {
+//     @media screen and (min-width: 768px) and (max-width: 1199px) {
+//         @content;
+//     }
+// }
+
+// Screen height media
+
+@mixin screen-h-349 {
+    @media screen and (max-height: 349px) {
+        @content;
+    }
+}
+
+@mixin screen-h-499 {
+    @media screen and (max-height: 499px) {
+        @content;
+    }
+}
+
+@mixin screen-h-587 {
+    @media screen and (max-height: 587px) {
+        @content;
+    }
+}
+
+@mixin screen-h-599 {
+    @media screen and (max-height: 599px) {
+        @content;
+    }
+}
+
+@mixin screen-h-350-499 {
+    @media screen and (min-height: 350px) and (max-height: 499px) {
+        @content;
+    }
+}
+
+
+
+
+
+
+// @mixin screen-699 {
+//     @media screen and (max-width: 699px) {
+//         @content;
+//     }
+// }
+
+// @mixin screen-1200 {
+//     @media screen and (max-width: 1200px) {
+//         @content;
+//     }
+// }
+
+// @mixin screen-1439 {
+//     @media screen and (max-width: 1439px) {
+//         @content;
+//     }
+// }
+
+// @mixin screen-1500 {
+//     @media screen and (max-width: 1500px) {
+//         @content;
+//     }
+// }
+
+// @mixin screen-600-900 {
+//     @media screen and (min-width: 600px) and (max-width: 900px) {
+//         @content;
+//     }
+// }
+
+// @mixin screen-768-1200 {
+//     @media screen and (min-width: 768px) and (max-width: 1200px) {
+//         @content;
+//     }
+// }
+
+// @mixin screen-1201-1365 {
+//     @media screen and (min-width: 1201px) and (max-width: 1365px) {
+//         @content;
+//     }
+// }
+
+// @mixin screen-1201-1500 {
+//     @media screen and (min-width: 1201px) and (max-width: 1500px) {
+//         @content;
+//     }
+// }
+
+// @mixin screen-1440-1900 {
+//     @media screen and (min-width: 1440px) and (max-width: 1900px) {
+//         @content;
+//     }
+// }
+
+// @mixin screen-h-767 {
+//     @media screen and (max-height: 767px) {
+//         @content;
+//     }
+// }
+
+// @mixin screen-h-863 {
+//     @media screen and (max-height: 863px) {
+//         @content;
+//     }
+// }
+
+// @mixin screen-h-1441-min {
+//     @media screen and (min-height: 1441px) {
+//         @content;
+//     }
+// }
+
+// @mixin screen-touch {
+//     @media (hover: none) {
+//         @content;
+//     }
+// }
+
+// 2.3 Flexbox snippets
+
+@mixin flex-row-wrap {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+@mixin flex-row-nowrap {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+
+@mixin flex-row-wrap {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+@mixin flex-column-nowrap {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+}
+
+// 3 Common elements
