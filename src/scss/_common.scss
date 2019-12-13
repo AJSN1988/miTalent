@@ -3,14 +3,14 @@
 @font-face {
     font-family: "NunitoBold";
     src: url("../assets/fonts/Nunito-Bold.ttf");
-    // font-weight: 300;
-    // font-style: normal;
 }
 @font-face {
     font-family: "NunitoExtraBold";
     src: url("../assets/fonts/Nunito-ExtraBold.ttf");
-    // font-weight: 400;
-    // font-style: normal;
+}
+@font-face {
+    font-family: "PoppinsMedium";
+    src: url("../assets/fonts/Poppins-Medium.ttf");
 }
 // @font-face {
 //     font-family: "OpenSans";
@@ -29,11 +29,11 @@
 // 1. Colors
 
 $textColor: #29292c;
+$greyTextColor: #96969b;
 $hoveredLink: #b4d3d3;
 $mainButtonColor: #b4d3d3;
 
 @mixin mainBackground {
-    background: rgb(181,212,212);
     background: linear-gradient(270deg, rgba(181,212,212,1) 0%, rgba(216,230,230,1) 100%);
 }
 
@@ -78,6 +78,12 @@ $mainButtonColor: #b4d3d3;
 
 @mixin screen-899 {
     @media screen and (max-width: 899px) {
+        @content;
+    }
+}
+
+@mixin screen-h-720 {
+    @media screen and (max-height: 720px) {
         @content;
     }
 }
@@ -238,6 +244,12 @@ $mainButtonColor: #b4d3d3;
 @mixin flex-column-nowrap {
     display: flex;
     flex-direction: column;
+    flex-wrap: nowrap;
+}
+
+@mixin flex-column-nowrap-reverse {
+    display: flex;
+    flex-direction: column-reverse;
     flex-wrap: nowrap;
 }
 

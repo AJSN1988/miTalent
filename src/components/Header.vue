@@ -53,6 +53,8 @@ export default {
     display: flex;
     justify-content: space-between;
     margin: 76px 61px;
+    position: relative;
+    z-index: 10;
     @include screen-899 {
         margin: 20px;
     }
@@ -149,7 +151,7 @@ export default {
         height: calc(100vh - 167px);
         left: 0;
         top: 167px;
-        z-index: 10;
+        // z-index: 10;
         @include screen-899 {
             top: 60px;
             height: calc(100vh - 60px);
