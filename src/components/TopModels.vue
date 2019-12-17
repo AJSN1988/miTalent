@@ -146,7 +146,7 @@ export default {
             }
         }
         position: absolute;
-        left: 75%;
+        left: 80%;
         top: 66.666%;
         height: 33.333%;
         @include flex-column-nowrap;

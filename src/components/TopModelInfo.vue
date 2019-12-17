@@ -1,7 +1,25 @@
 <template>
     <section class="top-model-info">
-        <div class="socials"></div>
-        <div class="description"></div>
+        <div class="socials">
+            <ul>
+                <li @mouseenter="toggleSocialColor($event)" @mouseleave="toggleSocialColor($event)">
+                    <img src="../assets/img/facebook.svg" alt="Facebook social icon" width="16" />
+                </li>
+                <li @mouseenter="toggleSocialColor($event)" @mouseleave="toggleSocialColor($event)">
+                    <img src="../assets/img/instagram.svg" alt="Facebook social icon" width="16" />
+                </li>
+                <li @mouseenter="toggleSocialColor($event)" @mouseleave="toggleSocialColor($event)">
+                    <img src="../assets/img/youtube.svg" alt="Facebook social icon" width="16" />
+                </li>
+                <li @mouseenter="toggleSocialColor($event)" @mouseleave="toggleSocialColor($event)">
+                    <img src="../assets/img/twitter.svg" alt="Facebook social icon" width="16" />
+                </li>
+            </ul>
+        </div>
+        <div class="description">
+            <div class="name">{{ model.name }}</div>
+            <div class="text">{{ model.description }}</div>
+        </div>
         <div class="photo">
             <img :src="model.photo" alt="Top model photo" />
         </div>
@@ -14,6 +32,11 @@ export default {
     name: "TopModelInfoComponent",
     props: {
         model: Object
+    },
+    methods: {
+        toggleSocialColor(e) {
+            console.log(e);
+        }
     }
 };
 </script>
@@ -30,12 +53,25 @@ export default {
     @include screen-h-720 {
         margin-top: 180px;
     }
-    .social {
+    .socials {
         height: 100%;
+        width: 13%;
+        margin-left: 61px;
+        ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            li {
+                margin-bottom: 40px;
+            }
+        }
+    }
+    .description {
+        width: 5%;
     }
     .photo {
         height: 100%;
-        text-align: right;
+        // text-align: right;
         // img {
         //     width: 100%;
         // }
