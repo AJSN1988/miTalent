@@ -134,7 +134,14 @@ export default {
     .controls {
         font-family: "NunitoExtraBold", Arial, sans-serif;
         font-size: 0.75rem;
-        width: 300px;
+        // width: 300px;
+
+        position: absolute;
+        right: 4.2%;
+        margin: 0;
+        height: 33.3333%;
+        bottom: 0;
+
         &:not(.active) {
             color: $greyTextColor;
         }
@@ -145,15 +152,19 @@ export default {
                 visibility: visible;
             }
         }
-        position: absolute;
-        left: 80%;
-        top: 66.666%;
-        height: 33.333%;
+        // position: absolute;
+        // left: 80%;
+        // top: 66.666%;
+        // height: 33.333%;
+        // margin-left: 80%;
+        // margin-top: -20px;
+        // margin-top: -1.85vh;
         @include flex-column-nowrap;
         justify-content: center;
         ul {
             margin: 0;
             list-style: none;
+            padding: 0;
             li {
                 padding: 20px 0;
                 @include flex-row-nowrap;
@@ -164,7 +175,7 @@ export default {
                     width: 56px;
                     border-color: $greyTextColor;
                     size: 2px;
-                    margin: auto 100px;
+                    margin: auto 5.9vw;
                     visibility: hidden;
                 }
                 hr.hovered {

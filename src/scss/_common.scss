@@ -9,8 +9,16 @@
     src: url("../assets/fonts/Nunito-ExtraBold.ttf");
 }
 @font-face {
+    font-family: "NunitoSemiBold";
+    src: url("../assets/fonts/Nunito-SemiBold.ttf");
+}
+@font-face {
     font-family: "PoppinsMedium";
     src: url("../assets/fonts/Poppins-Medium.ttf");
+}
+@font-face {
+    font-family: "PoppinsRegular";
+    src: url("../assets/fonts/Poppins-Regular.ttf");
 }
 // @font-face {
 //     font-family: "OpenSans";
@@ -28,6 +36,7 @@
 
 // 1. Colors
 
+$mainWhite: #ffffff;
 $textColor: #29292c;
 $greyTextColor: #96969b;
 $hoveredLink: #b4d3d3;
@@ -63,6 +72,12 @@ $mainButtonColor: #b4d3d3;
 //         @content;
 //     }
 // }
+
+@mixin  screen-min-1920 {
+    @media screen and (min-width: 1920px) {
+        @content;
+    }
+}
 
 // @mixin screen-639 {
 //     @media screen and (max-width: 639px) {
