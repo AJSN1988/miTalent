@@ -48,30 +48,49 @@
 export default {
     name: "TopModelInfoComponent",
     props: {
-        model: Object
+        model: {
+            type: Object,
+            required: true,
+            default: null
+        }
     },
     methods: {
         toggleSocialColor(e) {
-            // console.log(e);
-            if (e.type === "mouseleave") {
-            }
-            if (e.type === "mouseenter") {
-            }
+            console.log(e);
+            // if (e.type === "mouseleave") {
+            // }
+            // if (e.type === "mouseenter") {
+            // }
         },
         toggleHoverViewButton(e) {
-            if (e.type === "mouseleave") {
-            }
+            const buttonIconSection = document.querySelector(
+                ".icon.button-part"
+            );
+            const iconVisibility = "initial";
+            let iconSectionWidth = "110px";
+
             if (e.type === "mouseenter") {
+                // iconVisibility = "hidden";
+                iconSectionWidth = "0";
             }
+
+            // Toggle play icon
+            buttonIconSection.querySelector(
+                "img"
+            ).style.visibility = iconVisibility;
+            // Toggle icon button section
+            buttonIconSection.style.width = iconSectionWidth;
         },
-        showModelProfile(e) {}
+        showModelProfile() {
+            // TODO add route to model profile
+            console.log("Go to model profile");
+        }
     }
 };
 </script>
 
 <style lang="scss" scoped>
 @import "../scss/_common.scss";
-
 .top-model-info {
     @include flex-row-nowrap;
     height: 75vh;
@@ -81,10 +100,20 @@ export default {
     @include screen-h-720 {
         margin-top: 180px;
     }
+    @include screen-1279 {
+        margin-top: 170px;
+    }
     .socials {
         height: 100%;
         width: 13%;
-        margin-left: 61px;
+        @include screen-1279 {
+            width: 5%;
+            padding-left: 20px;
+            position: absolute;
+            height: auto;
+            top: 29%;
+        }
+        padding-left: 61px;
         ul {
             margin: 0;
             padding: 0;
@@ -96,13 +125,18 @@ export default {
     }
     .description {
         width: 5%;
+        @include screen-1279 {
+            width: 0;
+        }
         .name {
             position: absolute;
             top: 50%;
-            // font-size: 6em;
             font-size: 5vw;
             @include screen-min-1920 {
                 font-size: 6em;
+            }
+            @include screen-1279 {
+                left: 5%;
             }
             width: 35%;
             font-family: "PoppinsRegular", Arial, sans-serif;
@@ -117,6 +151,9 @@ export default {
                 right: 60px;
                 width: 56px;
                 margin: 0;
+                @include screen-1279 {
+                    display: none;
+                }
             }
         }
         .text {
@@ -126,17 +163,31 @@ export default {
             font-family: "NunitoSemiBold", Arial, sans-serif;
             letter-spacing: 2px;
             font-size: 1.063em;
+            @include screen-1279 {
+                left: 5%;
+            }
         }
     }
     .photo {
         height: 100%;
-        width: 78%;
+        width: 76%;
+        @include screen-1279 {
+            width: 100%;
+            margin-left: -7%;
+            flex-grow: 1;
+            z-index: -1;
+        }
     }
     .view-button {
         height: 110px;
         position: absolute;
-        margin-left: 61px;
+        left: 61px;
         bottom: 0;
+        min-width: 320px;
+        @include screen-1279 {
+            left: 0;
+            bottom: 10px;
+        }
         width: calc(18% + 110px);
         @include flex-row-nowrap;
         text-align: center;
@@ -155,10 +206,13 @@ export default {
             text-transform: uppercase;
             font-size: 1.063em;
             letter-spacing: 2px;
+            transition: 0.5s ease-in;
         }
         .icon {
             width: 110px;
             background-color: $mainWhite;
+            transition: 0.5s ease-in;
+            overflow: hidden;
             img {
                 align-self: center;
             }

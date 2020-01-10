@@ -1,10 +1,10 @@
 <template>
     <section class="home container">
-        <main-header></main-header>
-        <top-models :models="modelsForTopList"></top-models>
-        <section class="catalog"></section>
-        <section class="last-news"></section>
-        <footer class="footer"></footer>
+        <main-header />
+        <top-models :models="modelsForTopList" />
+        <section class="catalog" />
+        <section class="last-news" />
+        <footer class="footer" />
     </section>
 </template>
 
@@ -14,6 +14,10 @@ import TopModels from "../components/TopModels.vue";
 
 export default {
     name: "HomeComponent",
+    components: {
+        MainHeader,
+        TopModels
+    },
     data() {
         return {
             modelsForTopList: [
@@ -71,10 +75,6 @@ export default {
                 }
             ]
         };
-    },
-    components: {
-        MainHeader: MainHeader,
-        TopModels: TopModels
     }
 };
 </script>

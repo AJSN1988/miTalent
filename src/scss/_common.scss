@@ -97,6 +97,12 @@ $mainButtonColor: #b4d3d3;
     }
 }
 
+@mixin screen-1279 {
+    @media screen and (max-width: 1279px) {
+        @content;
+    }
+}
+
 @mixin screen-h-720 {
     @media screen and (max-height: 720px) {
         @content;

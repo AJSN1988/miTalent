@@ -1,9 +1,9 @@
 <template>
     <header class="header">
         <button class="burger-menu" @click="openMenu($event)">
-            <span></span>
-            <span></span>
-            <span></span>
+            <span />
+            <span />
+            <span />
         </button>
         <nav class="horisontal-nav">
             <ul>
@@ -28,7 +28,7 @@
         <div class="search-form">
             <img src="../assets/img/search.svg" alt="Search icon" width="20" />
         </div>
-        <div class="side-menu hidden"></div>
+        <div class="side-menu hidden" />
     </header>
 </template>
 
@@ -36,7 +36,7 @@
 export default {
     name: "MainHeader",
     methods: {
-        openMenu(e) {
+        openMenu() {
             document.querySelector(".burger-menu").classList.toggle("show");
 
             document.querySelector(".side-menu").classList.toggle("hidden");
@@ -57,6 +57,9 @@ export default {
     z-index: 10;
     @include screen-899 {
         margin: 20px;
+    }
+    @include screen-1279 {
+        margin: 35px 20px;
     }
     .burger-menu {
         margin: 0;

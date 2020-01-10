@@ -5,11 +5,11 @@
             <hr />
         </div>
         <div class="models-info-wrapper">
-            <top-model-info :model="models[0]"></top-model-info>
+            <top-model-info :model="models[0]" />
             <!-- <top-model-card></top-model-card>
             <top-model-card></top-model-card>-->
         </div>
-        <div class="placeholder"></div>
+        <div class="placeholder" />
         <div class="controls">
             <ul>
                 <li
@@ -33,18 +33,33 @@ import TopModelInfo from "./TopModelInfo.vue";
 
 export default {
     name: "TopMondelsComponent",
+    components: {
+        TopModelInfo
+    },
+    props: {
+        models: {
+            type: Array,
+            required: true
+        }
+    },
     data() {
         return {
             activeModelId: 1
         };
+    },
+    computed: {
+        currentModelId() {
+            return this.activeModelId.toString().padStart(2, "0");
+        }
     },
     methods: {
         changeModelCard(e, id) {
             if (
                 e.target.classList.contains("active") ||
                 e.target.parentElement.classList.contains("active")
-            )
+            ) {
                 return false;
+            }
 
             const activeLi = document.querySelector(".controls ul li.active");
             if (activeLi) {
@@ -57,8 +72,9 @@ export default {
             if (
                 e.target.classList.contains("active") ||
                 e.target.parentElement.classList.contains("active")
-            )
+            ) {
                 return false;
+            }
 
             const hr = e.target.querySelector("hr");
             if (hr) {
@@ -68,17 +84,6 @@ export default {
         hoverOutControls(e) {
             e.target.querySelector("hr").classList.remove("hovered");
         }
-    },
-    computed: {
-        currentModelId() {
-            return this.activeModelId.toString().padStart(2, "0");
-        }
-    },
-    props: {
-        models: Array
-    },
-    components: {
-        TopModelInfo: TopModelInfo
     }
 };
 </script>
@@ -94,6 +99,10 @@ export default {
     .current-model-label {
         font-family: "PoppinsMedium", "Arial", sans-serif;
         margin-left: 60px;
+        @include screen-1279 {
+            margin-left: 20px;
+            height: 80%;
+        }
         height: 75%;
         @include flex-column-nowrap;
         justify-content: flex-end;
@@ -121,6 +130,9 @@ export default {
         top: 0;
         height: 100%;
         width: 75%;
+        @include screen-1279 {
+            width: 100%;
+        }
     }
     .placeholder {
         position: absolute;
