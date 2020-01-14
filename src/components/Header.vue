@@ -66,7 +66,7 @@ export default {
         padding: 0;
         border: none;
         outline: none;
-        position: fixed;
+        position: absolute;
         // z-index: 11;
         &:hover {
             cursor: pointer;

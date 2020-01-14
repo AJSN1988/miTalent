@@ -92,16 +92,28 @@ export default {
 @import "../scss/_common.scss";
 
 .top-models-section {
-    min-height: 720px;
+    @include screen-min-1280 {
+        min-height: 720px;
+    }
     height: 100vh;
     margin-top: -181px;
+    @include screen-1279 {
+        margin-top: -99px;
+    }
     position: relative;
+    @include screen-min-h-1200 {
+        height: 1080px;
+    }
     .current-model-label {
         font-family: "PoppinsMedium", "Arial", sans-serif;
         margin-left: 60px;
         @include screen-1279 {
             margin-left: 20px;
-            height: 80%;
+            height: 100%;
+        }
+        @include screen-768-1279 {
+            // height: 50%;
+            // padding-top: 50%;
         }
         height: 75%;
         @include flex-column-nowrap;
@@ -115,6 +127,9 @@ export default {
         span {
             order: 1;
             letter-spacing: 5px;
+            @include screen-1279 {
+                margin-bottom: 130px;
+            }
         }
         hr {
             width: 60px;
@@ -146,49 +161,78 @@ export default {
     .controls {
         font-family: "NunitoExtraBold", Arial, sans-serif;
         font-size: 0.75rem;
-        // width: 300px;
-
         position: absolute;
-        right: 4.2%;
+
+        width: 100%;
+        @include flex-row-nowrap;
+        justify-content: flex-end;
+        right: 0;
+
+        // right: 4.2%;
         margin: 0;
         height: 33.3333%;
         bottom: 0;
-
+        @include screen-1279 {
+            // position: initial;
+            // height: auto;
+            // margin-top: 23.5vh;
+            width: 100%;
+            left: 0;
+            height: 110px;
+            // bottom: -82px;
+        }
         &:not(.active) {
             color: $greyTextColor;
+            @include screen-1279 {
+                color: $textColor;
+            }
         }
         .active {
             color: $textColor;
             hr {
-                border-color: $textColor;
+                background-color: $textColor;
                 visibility: visible;
             }
         }
-        // position: absolute;
-        // left: 80%;
-        // top: 66.666%;
-        // height: 33.333%;
-        // margin-left: 80%;
-        // margin-top: -20px;
-        // margin-top: -1.85vh;
-        @include flex-column-nowrap;
-        justify-content: center;
+        // @include flex-column-nowrap;
+        // justify-content: center;
         ul {
+            width: 25%;
+            align-self: center;
             margin: 0;
             list-style: none;
             padding: 0;
-            li {
-                padding: 20px 0;
+            @include screen-1279 {
                 @include flex-row-nowrap;
+                justify-content: flex-end;
+                margin-right: 20px;
+            }
+            li {
+                // padding: 20px 0;
+                padding: 20px 20%; // 20px 96px
+                @include flex-row-nowrap;
+                @include screen-1279 {
+                    margin: 0 20px;
+                    font-size: 1.2em;
+                    @include flex-column-nowrap;
+                    padding: 0;
+                    align-self: center;
+                    text-align: center;
+                }
                 &:hover {
                     cursor: pointer;
                 }
                 hr {
                     width: 56px;
-                    border-color: $greyTextColor;
+                    background-color: $greyTextColor;
+                    // border: none;
                     size: 2px;
-                    margin: auto 5.9vw;
+                    // margin: auto 5.9vw;
                     visibility: hidden;
+                    @include screen-1279 {
+                        margin: 10px 0 0;
+                        width: 30px;
+                    }
                 }
                 hr.hovered {
                     visibility: visible;

@@ -25,7 +25,7 @@
         </div>
         <div
             class="photo"
-            :style="{ 'background-image': 'url(' + model.photo + ')', 'background-position': 'left', 'background-size': 'cover' }"
+            :style="{ 'background-image': 'url(' + model.photo + ')', 'background-position': 'center', 'background-size': 'cover' }"
         >
             <!-- <img :src="model.photo" alt="Top model photo" width="100%" /> -->
         </div>
@@ -97,48 +97,86 @@ export default {
     min-height: 540px;
     width: 100%;
     margin-top: 25vh;
+    position: relative;
     @include screen-h-720 {
         margin-top: 180px;
     }
+    @include screen-min-h-1200 {
+        height: 75%;
+        margin-top: 18%;
+    }
     @include screen-1279 {
-        margin-top: 170px;
+        padding-top: 88px;
+        margin-top: 0;
+        height: calc(100% - 88px);
     }
     .socials {
-        height: 100%;
+        height: calc(100% - 110px);
         width: 13%;
         @include screen-1279 {
             width: 5%;
-            padding-left: 20px;
+            padding-left: 0;
             position: absolute;
-            height: auto;
-            top: 29%;
+            top: 0;
+            padding-top: 88px;
+        }
+        @include screen-768-1279 {
         }
         padding-left: 61px;
         ul {
             margin: 0;
             padding: 0;
+            // @include screen-1279 {
+            //     padding: 20px 0 0 38px;
+            //     @include flex-row-nowrap;
+            // }
+            @include screen-768-1279 {
+                padding: 20px 0 0 20px;
+            }
             list-style: none;
             li {
                 margin-bottom: 40px;
+                // @include screen-1279 {
+                //     margin: 0 20px;
+                // }
             }
         }
     }
     .description {
         width: 5%;
+        z-index: 1;
+        // height: calc(100% - 110px);
+        height: 66.6666%;
+        @include flex-column-nowrap;
+        justify-content: flex-end;
         @include screen-1279 {
-            width: 0;
+            // width: 0;
+            height: calc(100% - 130px);
+            justify-content: flex-end;
+            //     @include flex-column-nowrap;
+            //     justify-content: center;
         }
         .name {
-            position: absolute;
-            top: 50%;
-            font-size: 5vw;
+            // padding-left: 58px;
+            // position: absolute;
+            // top: 50%;
+            font-size: 5.3vw;
+            position: relative;
+
             @include screen-min-1920 {
                 font-size: 6em;
             }
             @include screen-1279 {
-                left: 5%;
+                // left: 7%;
+                // position: initial;
+                padding-left: 58px;
+                bottom: 20px;
+                top: 0;
             }
-            width: 35%;
+            @include screen-768-1279 {
+                font-size: 6em;
+            }
+            width: fit-content;
             font-family: "PoppinsRegular", Arial, sans-serif;
             line-height: 1.1;
             hr {
@@ -146,31 +184,42 @@ export default {
                 border: none;
                 height: 7px;
                 position: absolute;
-                display: block;
-                bottom: 20px;
-                right: 60px;
+                // display: block;
+                // bottom: 20px;
+                // right: 60px;
                 width: 56px;
                 margin: 0;
+                right: 5px;
+                bottom: 15px;
                 @include screen-1279 {
                     display: none;
                 }
             }
         }
         .text {
-            bottom: 25%;
-            position: absolute;
+            // padding-left: 58px;
+            margin-top: 20px;
+            white-space: nowrap;
+            // bottom: 25%;
+            // position: absolute;
             text-transform: uppercase;
             font-family: "NunitoSemiBold", Arial, sans-serif;
             letter-spacing: 2px;
             font-size: 1.063em;
             @include screen-1279 {
-                left: 5%;
+                // left: 7%;
+                // white-space: nowrap;
+                // position: initial;
+                // bottom: 0;
+                padding-left: 58px;
+                // margin-top: 20px;
             }
         }
     }
     .photo {
         height: 100%;
-        width: 76%;
+        // width: 76%;
+        width: 78%;
         @include screen-1279 {
             width: 100%;
             margin-left: -7%;
@@ -183,10 +232,11 @@ export default {
         position: absolute;
         left: 61px;
         bottom: 0;
-        min-width: 320px;
+        z-index: 2;
         @include screen-1279 {
             left: 0;
-            bottom: 10px;
+            min-width: 320px;
+            // z-index: 1;
         }
         width: calc(18% + 110px);
         @include flex-row-nowrap;
