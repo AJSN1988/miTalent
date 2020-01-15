@@ -23,7 +23,10 @@
             </ul>
         </nav>
         <div class="logo">
-            <img src="../assets/img/logo.png" alt="Main logo" />
+            <picture>
+                <source srcset="../assets/img/logo_small.png" media="(max-width: 767px)" />
+                <img srcset="../assets/img/logo.png" alt="Main logo default" />
+            </picture>
         </div>
         <div class="search-form">
             <img src="../assets/img/search.svg" alt="Search icon" width="20" />

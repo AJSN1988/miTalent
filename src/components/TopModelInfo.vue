@@ -105,6 +105,10 @@ export default {
         height: 75%;
         margin-top: 18%;
     }
+    @include screen-767 {
+        height: 562px;
+        padding-top: 88px;
+    }
     @include screen-1279 {
         padding-top: 88px;
         margin-top: 0;
@@ -113,68 +117,76 @@ export default {
     .socials {
         height: calc(100% - 110px);
         width: 13%;
-        @include screen-1279 {
+        @include screen-767 {
+            width: 100%;
+            position: absolute;
+            padding: 0;
+            height: auto;
+            bottom: 0;
+        }
+        @include screen-768-1279 {
             width: 5%;
             padding-left: 0;
             position: absolute;
             top: 0;
             padding-top: 88px;
         }
-        @include screen-768-1279 {
-        }
         padding-left: 61px;
         ul {
             margin: 0;
             padding: 0;
-            // @include screen-1279 {
-            //     padding: 20px 0 0 38px;
-            //     @include flex-row-nowrap;
-            // }
+            @include screen-767 {
+                @include flex-row-nowrap;
+                justify-content: space-around;
+                height: 50px;
+            }
             @include screen-768-1279 {
-                padding: 20px 0 0 20px;
+                padding: 35px 0 0 20px;
             }
             list-style: none;
             li {
                 margin-bottom: 40px;
-                // @include screen-1279 {
-                //     margin: 0 20px;
-                // }
+                @include screen-767 {
+                    margin: 0;
+                    align-self: center;
+                }
             }
         }
     }
     .description {
         width: 5%;
         z-index: 1;
-        // height: calc(100% - 110px);
         height: 66.6666%;
         @include flex-column-nowrap;
         justify-content: flex-end;
-        @include screen-1279 {
-            // width: 0;
-            height: calc(100% - 130px);
+        @include screen-767 {
+            height: 150px;
+            width: 100%;
+            position: absolute;
+            bottom: 50px;
+            justify-content: center;
+        }
+        @include screen-768-1279 {
+            height: calc(100% - 145px);
             justify-content: flex-end;
-            //     @include flex-column-nowrap;
-            //     justify-content: center;
         }
         .name {
-            // padding-left: 58px;
-            // position: absolute;
-            // top: 50%;
             font-size: 5.3vw;
             position: relative;
-
             @include screen-min-1920 {
                 font-size: 6em;
             }
+            @include screen-767 {
+                font-size: 3em;
+                padding-left: 20px;
+            }
             @include screen-1279 {
-                // left: 7%;
-                // position: initial;
-                padding-left: 58px;
                 bottom: 20px;
                 top: 0;
             }
             @include screen-768-1279 {
                 font-size: 6em;
+                padding-left: 58px;
             }
             width: fit-content;
             font-family: "PoppinsRegular", Arial, sans-serif;
@@ -184,9 +196,6 @@ export default {
                 border: none;
                 height: 7px;
                 position: absolute;
-                // display: block;
-                // bottom: 20px;
-                // right: 60px;
                 width: 56px;
                 margin: 0;
                 right: 5px;
@@ -197,29 +206,27 @@ export default {
             }
         }
         .text {
-            // padding-left: 58px;
             margin-top: 20px;
             white-space: nowrap;
-            // bottom: 25%;
-            // position: absolute;
             text-transform: uppercase;
             font-family: "NunitoSemiBold", Arial, sans-serif;
             letter-spacing: 2px;
             font-size: 1.063em;
-            @include screen-1279 {
-                // left: 7%;
-                // white-space: nowrap;
-                // position: initial;
-                // bottom: 0;
+            @include screen-767 {
+                padding-left: 20px;
+                margin-top: 10px;
+            }
+            @include screen-768-1279 {
                 padding-left: 58px;
-                // margin-top: 20px;
             }
         }
     }
     .photo {
         height: 100%;
-        // width: 76%;
-        width: 78%;
+        width: calc(78% - 15px);
+        @include screen-767 {
+            height: 362px;
+        }
         @include screen-1279 {
             width: 100%;
             margin-left: -7%;
@@ -233,10 +240,13 @@ export default {
         left: 61px;
         bottom: 0;
         z-index: 2;
+        @include screen-767 {
+            bottom: -110px;
+            width: 100%;
+        }
         @include screen-1279 {
             left: 0;
             min-width: 320px;
-            // z-index: 1;
         }
         width: calc(18% + 110px);
         @include flex-row-nowrap;
@@ -257,9 +267,16 @@ export default {
             font-size: 1.063em;
             letter-spacing: 2px;
             transition: 0.5s ease-in;
+            @include screen-767 {
+                transition: none;
+            }
         }
         .icon {
             width: 110px;
+            @include screen-767 {
+                width: 0;
+                transition: none;
+            }
             background-color: $mainWhite;
             transition: 0.5s ease-in;
             overflow: hidden;

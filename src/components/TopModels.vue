@@ -97,8 +97,14 @@ export default {
     }
     height: 100vh;
     margin-top: -181px;
+    @include screen-767 {
+        height: 650px;
+    }
     @include screen-1279 {
         margin-top: -99px;
+    }
+    @include screen-768-1279 {
+        min-height: 650px;
     }
     position: relative;
     @include screen-min-h-1200 {
@@ -107,13 +113,16 @@ export default {
     .current-model-label {
         font-family: "PoppinsMedium", "Arial", sans-serif;
         margin-left: 60px;
+        @include screen-767 {
+            height: 450px;
+        }
         @include screen-1279 {
             margin-left: 20px;
-            height: 100%;
         }
         @include screen-768-1279 {
             // height: 50%;
             // padding-top: 50%;
+            height: calc(100% - 15px);
         }
         height: 75%;
         @include flex-column-nowrap;
@@ -127,7 +136,10 @@ export default {
         span {
             order: 1;
             letter-spacing: 5px;
-            @include screen-1279 {
+            @include screen-767 {
+                margin-bottom: 35px;
+            }
+            @include screen-768-1279 {
                 margin-bottom: 130px;
             }
         }
@@ -162,40 +174,53 @@ export default {
         font-family: "NunitoExtraBold", Arial, sans-serif;
         font-size: 0.75rem;
         position: absolute;
-
         width: 100%;
         @include flex-row-nowrap;
         justify-content: flex-end;
         right: 0;
-
-        // right: 4.2%;
         margin: 0;
         height: 33.3333%;
         bottom: 0;
+        @include screen-767 {
+            top: 380px;
+            height: 50px;
+        }
         @include screen-1279 {
-            // position: initial;
-            // height: auto;
-            // margin-top: 23.5vh;
             width: 100%;
             left: 0;
+        }
+        @include screen-768-1279 {
             height: 110px;
-            // bottom: -82px;
         }
         &:not(.active) {
             color: $greyTextColor;
-            @include screen-1279 {
+            @include screen-767 {
+                color: $mainButtonColor;
+            }
+            @include screen-768-1279 {
                 color: $textColor;
             }
         }
         .active {
             color: $textColor;
+            @include screen-767 {
+                color: $mainButtonColor;
+            }
             hr {
                 background-color: $textColor;
+                @include screen-767 {
+                    border-color: $mainButtonColor;
+                    color: $mainButtonColor;
+                }
+                @include screen-1279 {
+                    background-color: initial;
+                }
+                @include screen-768-1279 {
+                    border-color: $textColor;
+                }
                 visibility: visible;
             }
         }
-        // @include flex-column-nowrap;
-        // justify-content: center;
         ul {
             width: 25%;
             align-self: center;
@@ -208,16 +233,25 @@ export default {
                 margin-right: 20px;
             }
             li {
-                // padding: 20px 0;
                 padding: 20px 20%; // 20px 96px
                 @include flex-row-nowrap;
+                @include screen-767 {
+                    &:not(:last-child) {
+                        margin: 0 10px;
+                    }
+                    &:last-child {
+                        margin: 0 0 0 10px;
+                    }
+                }
                 @include screen-1279 {
-                    margin: 0 20px;
                     font-size: 1.2em;
                     @include flex-column-nowrap;
                     padding: 0;
                     align-self: center;
                     text-align: center;
+                }
+                @include screen-768-1279 {
+                    margin: 0 20px;
                 }
                 &:hover {
                     cursor: pointer;
@@ -225,9 +259,7 @@ export default {
                 hr {
                     width: 56px;
                     background-color: $greyTextColor;
-                    // border: none;
                     size: 2px;
-                    // margin: auto 5.9vw;
                     visibility: hidden;
                     @include screen-1279 {
                         margin: 10px 0 0;

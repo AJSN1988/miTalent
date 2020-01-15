@@ -81,6 +81,12 @@ $mainButtonColor: #b4d3d3;
 
 // 2.4 Max width
 
+@mixin screen-767 {
+    @media screen and (max-width: 767px) {
+        @content;
+    }
+}
+
 @mixin screen-899 {
     @media screen and (max-width: 899px) {
         @content;
