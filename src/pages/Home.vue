@@ -36,7 +36,7 @@ export default {
                 },
                 {
                     id: 2,
-                    name: "katarina Wild",
+                    name: "Katarina Wild",
                     photo: "../static/katarina_main.png",
                     description: "Young model 2021",
                     links: {
@@ -50,7 +50,7 @@ export default {
                 {
                     id: 3,
                     name: "Anna Rice",
-                    photo: "../static/anna_main.png",
+                    photo: "../static/anna_rice.png",
                     description: "Young model 2022",
                     links: {
                         profile: "/anna_rice",
@@ -63,7 +63,7 @@ export default {
                 {
                     id: 4,
                     name: "Amanda Cole",
-                    photo: "..static/amanda_cole.png",
+                    photo: "../static/amanda_cole.png",
                     description: "Young model 2023",
                     links: {
                         profile: "/amanda_cole",

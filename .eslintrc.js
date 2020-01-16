@@ -47,6 +47,7 @@ module.exports = {
         "max-len": ["error", { "code": 150 }],
         "consistent-return": "off",
         "no-console": "off",
-        "operator-linebreak": "off"
+        "operator-linebreak": "off",
+        "arrow-parens": "off"
     }
 };

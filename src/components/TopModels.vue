@@ -5,9 +5,12 @@
             <hr />
         </div>
         <div class="models-info-wrapper">
-            <top-model-info :model="models[0]" />
-            <!-- <top-model-card></top-model-card>
-            <top-model-card></top-model-card>-->
+            <top-model-info
+                v-for="model in models"
+                :key="model.id"
+                :model="model"
+                :class="{ 'active': model.id === activeModelId }"
+            />
         </div>
         <div class="placeholder" />
         <div class="controls">
@@ -113,6 +116,8 @@ export default {
     .current-model-label {
         font-family: "PoppinsMedium", "Arial", sans-serif;
         margin-left: 60px;
+        position: absolute;
+        z-index: 3;
         @include screen-767 {
             height: 450px;
         }
@@ -120,9 +125,8 @@ export default {
             margin-left: 20px;
         }
         @include screen-768-1279 {
-            // height: 50%;
-            // padding-top: 50%;
-            height: calc(100% - 15px);
+            height: calc(50% - 15px);
+            margin-top: calc(50% - 130px);
         }
         height: 75%;
         @include flex-column-nowrap;
@@ -184,13 +188,16 @@ export default {
         @include screen-767 {
             top: 380px;
             height: 50px;
+            width: 100%;
         }
         @include screen-1279 {
-            width: 100%;
             left: 0;
+            z-index: 1;
         }
         @include screen-768-1279 {
             height: 110px;
+            width: 50%;
+            margin-left: auto;
         }
         &:not(.active) {
             color: $greyTextColor;

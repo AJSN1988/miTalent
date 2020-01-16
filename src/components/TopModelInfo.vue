@@ -2,17 +2,61 @@
     <section class="top-model-info">
         <div class="socials">
             <ul>
-                <li @mouseenter="toggleSocialColor($event)" @mouseleave="toggleSocialColor($event)">
+                <li
+                    role="link"
+                    @mouseenter="toggleSocialColor($event)"
+                    @mouseleave="toggleSocialColor($event)"
+                    @click="goToModelSocial(model.links.facebook)"
+                >
                     <img src="../assets/img/facebook.svg" alt="Facebook social icon" width="16" />
+                    <img
+                        src="../assets/img/facebook_hovered.svg"
+                        alt="Facebook hovered social icon"
+                        width="16"
+                        class="hovered"
+                    />
                 </li>
-                <li @mouseenter="toggleSocialColor($event)" @mouseleave="toggleSocialColor($event)">
-                    <img src="../assets/img/instagram.svg" alt="Facebook social icon" width="16" />
+                <li
+                    role="link"
+                    @mouseenter="toggleSocialColor($event)"
+                    @mouseleave="toggleSocialColor($event)"
+                    @click="goToModelSocial(model.links.instagram)"
+                >
+                    <img src="../assets/img/instagram.svg" alt="Instagram social icon" width="16" />
+                    <img
+                        src="../assets/img/instagram_hovered.svg"
+                        alt="Instagram hovered social icon"
+                        width="16"
+                        class="hovered"
+                    />
                 </li>
-                <li @mouseenter="toggleSocialColor($event)" @mouseleave="toggleSocialColor($event)">
-                    <img src="../assets/img/youtube.svg" alt="Facebook social icon" width="16" />
+                <li
+                    role="link"
+                    @mouseenter="toggleSocialColor($event)"
+                    @mouseleave="toggleSocialColor($event)"
+                    @click="goToModelSocial(model.links.youtube)"
+                >
+                    <img src="../assets/img/youtube.svg" alt="Youtube social icon" width="16" />
+                    <img
+                        src="../assets/img/youtube_hovered.svg"
+                        alt="Youtube hovered social icon"
+                        width="16"
+                        class="hovered"
+                    />
                 </li>
-                <li @mouseenter="toggleSocialColor($event)" @mouseleave="toggleSocialColor($event)">
-                    <img src="../assets/img/twitter.svg" alt="Facebook social icon" width="16" />
+                <li
+                    role="link"
+                    @mouseenter="toggleSocialColor($event)"
+                    @mouseleave="toggleSocialColor($event)"
+                    @click="goToModelSocial(model.links.twitter)"
+                >
+                    <img src="../assets/img/twitter.svg" alt="Twitter social icon" width="16" />
+                    <img
+                        src="../assets/img/twitter_hovered.svg"
+                        alt="Twitter hovered social icon"
+                        width="16"
+                        class="hovered"
+                    />
                 </li>
             </ul>
         </div>
@@ -26,9 +70,7 @@
         <div
             class="photo"
             :style="{ 'background-image': 'url(' + model.photo + ')', 'background-position': 'center', 'background-size': 'cover' }"
-        >
-            <!-- <img :src="model.photo" alt="Top model photo" width="100%" /> -->
-        </div>
+        />
         <div
             class="view-button"
             role="button"
@@ -56,21 +98,26 @@ export default {
     },
     methods: {
         toggleSocialColor(e) {
-            console.log(e);
-            // if (e.type === "mouseleave") {
-            // }
-            // if (e.type === "mouseenter") {
-            // }
+            const svgElements = e.target.children;
+            let initElementVisible = "initial";
+            let hoveredElementVisible = "none";
+
+            if (e.type === "mouseenter") {
+                initElementVisible = "none";
+                hoveredElementVisible = "initial";
+            }
+            svgElements[0].style.display = initElementVisible;
+            svgElements[1].style.display = hoveredElementVisible;
         },
         toggleHoverViewButton(e) {
-            const buttonIconSection = document.querySelector(
+            const allButtonIconSections = document.querySelectorAll(
                 ".icon.button-part"
             );
+            const buttonIconSection = allButtonIconSections[this.model.id - 1];
             const iconVisibility = "initial";
             let iconSectionWidth = "110px";
 
             if (e.type === "mouseenter") {
-                // iconVisibility = "hidden";
                 iconSectionWidth = "0";
             }
 
@@ -81,9 +128,12 @@ export default {
             // Toggle icon button section
             buttonIconSection.style.width = iconSectionWidth;
         },
+        goToModelSocial(link) {
+            window.open(link);
+        },
         showModelProfile() {
             // TODO add route to model profile
-            console.log("Go to model profile");
+            console.log(`Go to model with id ${this.model.id}`);
         }
     }
 };
@@ -91,13 +141,62 @@ export default {
 
 <style lang="scss" scoped>
 @import "../scss/_common.scss";
+
+.top-model-info.active {
+    opacity: 1;
+    z-index: 1;
+    left: 0;
+    // Animate
+    overflow: hidden;
+    @include screen-767 {
+        overflow: initial;
+    }
+    .socials {
+        ul {
+            li {
+                margin-left: 0;
+            }
+        }
+    }
+    .description {
+        .name,
+        .text {
+            opacity: 1;
+        }
+    }
+    .photo {
+        margin-left: 0;
+        // @include screen-767 {
+        //     height: 362px;
+        // }
+        @include screen-1279 {
+            width: 100%;
+            margin-left: -7%;
+            flex-grow: 1;
+            z-index: -1;
+        }
+    }
+    .view-button {
+        bottom: 0;
+        @include screen-767 {
+            bottom: -110px;
+            // width: 100%;
+        }
+        @include screen-1279 {
+            // left: 0;
+            min-width: 320px;
+        }
+    }
+}
 .top-model-info {
+    opacity: 0;
     @include flex-row-nowrap;
     height: 75vh;
     min-height: 540px;
     width: 100%;
     margin-top: 25vh;
-    position: relative;
+    position: absolute;
+    left: -100%;
     @include screen-h-720 {
         margin-top: 180px;
     }
@@ -130,6 +229,7 @@ export default {
             position: absolute;
             top: 0;
             padding-top: 88px;
+            z-index: 3;
         }
         padding-left: 61px;
         ul {
@@ -146,9 +246,23 @@ export default {
             list-style: none;
             li {
                 margin-bottom: 40px;
+                width: 16px;
+                &:hover {
+                    cursor: pointer;
+                }
                 @include screen-767 {
                     margin: 0;
                     align-self: center;
+                }
+                .hovered {
+                    display: none;
+                }
+                // For animate
+                margin-left: -100px;
+                @for $i from 1 to 5 {
+                    &:nth-child(#{$i}) {
+                        transition: $i * 0.25s ease-out;
+                    }
                 }
             }
         }
@@ -170,9 +284,15 @@ export default {
             height: calc(100% - 145px);
             justify-content: flex-end;
         }
+        // For animate
+        transition: 1s ease;
         .name {
             font-size: 5.3vw;
             position: relative;
+            min-width: 300px;
+            // For animate
+            transition: opacity 1.5s ease-out;
+            opacity: 0;
             @include screen-min-1920 {
                 font-size: 6em;
             }
@@ -183,6 +303,7 @@ export default {
             @include screen-1279 {
                 bottom: 20px;
                 top: 0;
+                min-width: initial;
             }
             @include screen-768-1279 {
                 font-size: 6em;
@@ -212,6 +333,9 @@ export default {
             font-family: "NunitoSemiBold", Arial, sans-serif;
             letter-spacing: 2px;
             font-size: 1.063em;
+            // For animate
+            transition: opacity 2s ease-out;
+            opacity: 0;
             @include screen-767 {
                 padding-left: 20px;
                 margin-top: 10px;
@@ -227,12 +351,15 @@ export default {
         @include screen-767 {
             height: 362px;
         }
-        @include screen-1279 {
-            width: 100%;
-            margin-left: -7%;
-            flex-grow: 1;
-            z-index: -1;
-        }
+        // @include screen-1279 {
+        //     width: 100%;
+        //     margin-left: -7%;
+        //     flex-grow: 1;
+        //     z-index: -1;
+        // }
+        // For animate
+        transition: 0.6s ease-in;
+        margin-left: 100%;
     }
     .view-button {
         height: 110px;
@@ -240,13 +367,16 @@ export default {
         left: 61px;
         bottom: 0;
         z-index: 2;
+        // For animate
+        bottom: -110px;
+        transition: 0.9s ease-in-out;
         @include screen-767 {
             bottom: -110px;
             width: 100%;
         }
         @include screen-1279 {
             left: 0;
-            min-width: 320px;
+            // min-width: 320px;
         }
         width: calc(18% + 110px);
         @include flex-row-nowrap;
