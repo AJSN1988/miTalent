@@ -2,7 +2,7 @@
     <section class="home container">
         <main-header />
         <top-models :models="modelsForTopList" />
-        <section class="catalog" />
+        <models-catalog />
         <section class="last-news" />
         <footer class="footer" />
     </section>
@@ -11,12 +11,14 @@
 <script>
 import MainHeader from "../components/Header.vue";
 import TopModels from "../components/TopModels.vue";
+import ModelsCatalog from "../components/ModelsCatalog.vue";
 
 export default {
     name: "HomeComponent",
     components: {
         MainHeader,
-        TopModels
+        TopModels,
+        ModelsCatalog
     },
     data() {
         return {

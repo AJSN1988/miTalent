@@ -110,6 +110,9 @@ export default {
             svgElements[1].style.display = hoveredElementVisible;
         },
         toggleHoverViewButton(e) {
+            if (window.matchMedia("(max-width: 1279px)").matches) {
+                return false;
+            }
             const allButtonIconSections = document.querySelectorAll(
                 ".icon.button-part"
             );
@@ -162,13 +165,11 @@ export default {
         .name,
         .text {
             opacity: 1;
+            margin-left: 0;
         }
     }
     .photo {
-        margin-left: 0;
-        // @include screen-767 {
-        //     height: 362px;
-        // }
+        margin-top: 0;
         @include screen-1279 {
             width: 100%;
             margin-left: -7%;
@@ -180,10 +181,8 @@ export default {
         bottom: 0;
         @include screen-767 {
             bottom: -110px;
-            // width: 100%;
         }
         @include screen-1279 {
-            // left: 0;
             min-width: 320px;
         }
     }
@@ -291,7 +290,9 @@ export default {
             position: relative;
             min-width: 300px;
             // For animate
-            transition: opacity 1.5s ease-out;
+            // transition: opacity 1.5s ease-out;
+            transition: 1.5s ease-out;
+            margin-left: 110vh;
             opacity: 0;
             @include screen-min-1920 {
                 font-size: 6em;
@@ -304,6 +305,7 @@ export default {
                 bottom: 20px;
                 top: 0;
                 min-width: initial;
+                margin-left: 0;
             }
             @include screen-768-1279 {
                 font-size: 6em;
@@ -351,15 +353,14 @@ export default {
         @include screen-767 {
             height: 362px;
         }
-        // @include screen-1279 {
-        //     width: 100%;
-        //     margin-left: -7%;
-        //     flex-grow: 1;
-        //     z-index: -1;
-        // }
+        @include screen-1279 {
+            margin-top: 0;
+            margin-left: -100%;
+        }
         // For animate
-        transition: 0.6s ease-in;
-        margin-left: 100%;
+        transition: 1s ease-in;
+        // margin-left: 100%;
+        margin-top: -75%;
     }
     .view-button {
         height: 110px;

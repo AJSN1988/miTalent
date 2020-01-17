@@ -117,12 +117,12 @@ export default {
         font-family: "PoppinsMedium", "Arial", sans-serif;
         margin-left: 60px;
         position: absolute;
-        z-index: 3;
         @include screen-767 {
             height: 450px;
         }
         @include screen-1279 {
             margin-left: 20px;
+            z-index: 3;
         }
         @include screen-768-1279 {
             height: calc(50% - 15px);
@@ -201,30 +201,11 @@ export default {
         }
         &:not(.active) {
             color: $greyTextColor;
-            @include screen-767 {
-                color: $mainButtonColor;
-            }
-            @include screen-768-1279 {
-                color: $textColor;
-            }
         }
         .active {
             color: $textColor;
-            @include screen-767 {
-                color: $mainButtonColor;
-            }
             hr {
                 background-color: $textColor;
-                @include screen-767 {
-                    border-color: $mainButtonColor;
-                    color: $mainButtonColor;
-                }
-                @include screen-1279 {
-                    background-color: initial;
-                }
-                @include screen-768-1279 {
-                    border-color: $textColor;
-                }
                 visibility: visible;
             }
         }
@@ -238,17 +219,15 @@ export default {
                 @include flex-row-nowrap;
                 justify-content: flex-end;
                 margin-right: 20px;
+                padding: 20px 0 10px;
+                background-color: #b4d3d3;
+                width: auto;
             }
             li {
-                padding: 20px 20%; // 20px 96px
+                padding: 20px 20%;
                 @include flex-row-nowrap;
                 @include screen-767 {
-                    &:not(:last-child) {
-                        margin: 0 10px;
-                    }
-                    &:last-child {
-                        margin: 0 0 0 10px;
-                    }
+                    margin: 0 10px;
                 }
                 @include screen-1279 {
                     font-size: 1.2em;
