@@ -5,6 +5,10 @@
     src: url("../assets/fonts/Nunito-Bold.ttf");
 }
 @font-face {
+    font-family: "NunitoBlack";
+    src: url("../assets/fonts/Nunito-Black.ttf");
+}
+@font-face {
     font-family: "NunitoExtraBold";
     src: url("../assets/fonts/Nunito-ExtraBold.ttf");
 }
@@ -37,10 +41,13 @@
 // 1. Colors
 
 $mainWhite: #ffffff;
+$navLinkColor: #919196;
 $textColor: #29292c;
 $greyTextColor: #96969b;
 $hoveredLink: #b4d3d3;
 $mainButtonColor: #b4d3d3;
+$actorBackgroundColor1: #e2e8e8;
+$actorBackgroundColor2: #d3dcdc;
 
 @mixin mainBackground {
     background: linear-gradient(270deg, rgba(181,212,212,1) 0%, rgba(216,230,230,1) 100%);
