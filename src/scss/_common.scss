@@ -48,6 +48,7 @@ $hoveredLink: #b4d3d3;
 $mainButtonColor: #b4d3d3;
 $actorBackgroundColor1: #e2e8e8;
 $actorBackgroundColor2: #d3dcdc;
+$catalogItemCover: #0d0d0ee6;
 
 @mixin mainBackground {
     background: linear-gradient(270deg, rgba(181,212,212,1) 0%, rgba(216,230,230,1) 100%);
@@ -88,6 +89,12 @@ $actorBackgroundColor2: #d3dcdc;
 
 // 2.4 Max width
 
+@mixin screen-459 {
+    @media screen and (max-width: 459px) {
+        @content;
+    }
+}
+
 @mixin screen-767 {
     @media screen and (max-width: 767px) {
         @content;
@@ -102,6 +109,12 @@ $actorBackgroundColor2: #d3dcdc;
 
 @mixin screen-1279 {
     @media screen and (max-width: 1279px) {
+        @content;
+    }
+}
+
+@mixin screen-1439 {
+    @media screen and (max-width: 1439px) {
         @content;
     }
 }
