@@ -1,6 +1,10 @@
 // Fonts
 
 @font-face {
+    font-family: "NunitoRegular";
+    src: url("../assets/fonts/Nunito-Regular.ttf");
+}
+@font-face {
     font-family: "NunitoBold";
     src: url("../assets/fonts/Nunito-Bold.ttf");
 }
@@ -67,6 +71,18 @@ $catalogItemCover: #0d0d0ee6;
 
 // 2.2 Width range
 
+@mixin screen-460-767 {
+    @media screen and (min-width: 460px) and (max-width: 767px) {
+        @content;
+    }
+}
+
+@mixin screen-1000-1919 {
+    @media screen and (min-width: 1000px) and (max-width: 1919px) {
+        @content;
+    }
+}
+
 @mixin screen-768-1279 {
     @media screen and (min-width: 768px) and (max-width: 1279px) {
         @content;
@@ -107,6 +123,12 @@ $catalogItemCover: #0d0d0ee6;
     }
 }
 
+@mixin screen-999 {
+    @media screen and (max-width: 999px) {
+        @content;
+    }
+}
+
 @mixin screen-1279 {
     @media screen and (max-width: 1279px) {
         @content;
@@ -115,6 +137,12 @@ $catalogItemCover: #0d0d0ee6;
 
 @mixin screen-1439 {
     @media screen and (max-width: 1439px) {
+        @content;
+    }
+}
+
+@mixin screen-1919 {
+    @media screen and (max-width: 1919px) {
         @content;
     }
 }
@@ -277,5 +305,3 @@ $catalogItemCover: #0d0d0ee6;
     flex-direction: column-reverse;
     flex-wrap: nowrap;
 }
-
-// 3 Common elements

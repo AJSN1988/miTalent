@@ -128,7 +128,10 @@ export default {
     }
     .catalog-wrapper {
         margin: 82px 120px 0;
-        @include screen-767 {
+        @include screen-459 {
+            margin: 22px 0 0;
+        }
+        @include screen-460-767 {
             margin: 22px 40px 0;
         }
         @include screen-768-1279 {
@@ -186,7 +189,7 @@ export default {
                 }
                 img {
                     width: 100%;
-                    height: auto;
+                    height: 100%;
                 }
                 .cover.hovered {
                     bottom: 0;
@@ -247,8 +250,34 @@ export default {
     }
     .see-more-wrapper {
         margin-top: 60px;
+        text-align: center;
+        button {
+            width: 218px;
+            height: 58px;
+            background-color: $mainButtonColor;
+            border: 1px solid $mainButtonColor;
+            border-radius: 30px;
+            font-family: "NunitoExtraBold", "Arial", sans-serif;
+            color: $mainWhite;
+            text-transform: uppercase;
+            font-size: 0.875em;
+            outline: none;
+            &:hover {
+                cursor: pointer;
+                -webkit-animation: 0.8s linear 0s infinite alternate
+                    seeMoreLinkAnimation;
+                -moz-animation: 0.8s linear 0s infinite alternate
+                    seeMoreLinkAnimation;
+                -o-animation: 0.8s linear 0s infinite alternate
+                    seeMoreLinkAnimation;
+                animation: 0.8s linear 0s infinite alternate
+                    seeMoreLinkAnimation;
+            }
+        }
     }
 }
+
+// Go to actor buttons
 
 @-webkit-keyframes actorLinkAnimation {
     from {
@@ -283,6 +312,44 @@ export default {
     }
     to {
         transform: scale(0.7);
+    }
+}
+
+// See more button
+
+@-webkit-keyframes seeMoreLinkAnimation {
+    from {
+        transform: scale(1);
+    }
+    to {
+        transform: scale(0.9);
+    }
+}
+
+@-moz-keyframes seeMoreLinkAnimation {
+    from {
+        transform: scale(1);
+    }
+    to {
+        transform: scale(0.9);
+    }
+}
+
+@-o-keyframes seeMoreLinkAnimation {
+    from {
+        transform: scale(1);
+    }
+    to {
+        transform: scale(0.9);
+    }
+}
+
+@keyframes seeMoreLinkAnimation {
+    from {
+        transform: scale(1);
+    }
+    to {
+        transform: scale(0.9);
     }
 }
 </style>
