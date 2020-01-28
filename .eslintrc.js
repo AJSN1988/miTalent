@@ -48,6 +48,7 @@ module.exports = {
         "consistent-return": "off",
         "no-console": "off",
         "operator-linebreak": "off",
-        "arrow-parens": "off"
+        "arrow-parens": "off",
+        "no-plusplus": "off"
     }
 };

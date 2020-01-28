@@ -43,6 +43,7 @@ export default {
     },
     data() {
         return {
+            changeLatestNewsTickerId: null,
             prevActiveSlideId: null,
             activeId: null,
             slideDirection: "right"
@@ -50,17 +51,24 @@ export default {
     },
     mounted() {
         this.activeId = this.$props.newsForSlider[0].id;
-        setInterval(() => {
+        this.changeLatestNewsTickerId = setInterval(() => {
             const news = this.$props.newsForSlider;
-            const randomIndex = this.getRandomId(0, news.length - 1);
-
-            this.prevActiveSlideId = this.activeId;
-            this.activeId = news[randomIndex].id;
+            for (let i = 0; i < news.length; i++) {
+                if (news[i].id === this.activeId) {
+                    this.prevActiveSlideId = this.activeId;
+                    if (i === news.length - 1) {
+                        this.activeId = news[0].id;
+                    } else {
+                        this.activeId = news[++i].id;
+                    }
+                }
+            }
         }, 5000);
     },
     methods: {
         changeActiveNews(e, id) {
             if (this.activeId === id) return false;
+            clearInterval(this.changeLatestNewsTickerId);
 
             this.slideDirection = id > this.activeId ? "right" : "left";
 
@@ -70,9 +78,6 @@ export default {
             e.target.classList.add("active");
             this.prevActiveSlideId = this.activeId;
             this.activeId = id;
-        },
-        getRandomId(min, max) {
-            return Math.floor(Math.random() * (max - min + 1)) + min;
         }
     }
 };
@@ -82,7 +87,8 @@ export default {
 @import "../scss/_common.scss";
 
 .news-slider-section {
-    height: 51.6666vw;
+    // height: 51.6666vw;
+    height: 100%;
     overflow: hidden;
     position: relative;
     .slide.active.right {
@@ -154,7 +160,8 @@ export default {
     .nav-dots {
         position: absolute;
         width: 100%;
-        bottom: 196px;
+        // bottom: 196px;
+        bottom: 19.758%;
         z-index: 2;
         .dots-wrapper {
             margin: auto;

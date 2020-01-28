@@ -182,7 +182,7 @@ export default {
         @include screen-1279 {
             margin: 50px 20px 0;
         }
-        min-height: 992px;
+        // min-height: 992px;
         @include flex-row-wrap;
         justify-content: space-between;
         .left-part {
@@ -244,14 +244,16 @@ export default {
                     width: calc(50% - 25px);
                     @include flex-column-nowrap;
                     .photo {
-                        height: 67.772%;
+                        // height: 67.772%;
+                        height: 14.8958vw;
                         img {
                             width: 100%;
                             height: 100%;
                         }
                     }
                     .description {
-                        height: 32.228%;
+                        // height: 32.228%;
+                        height: 7.0833vw;
                         @include flex-column-nowrap;
                         justify-content: flex-end;
                         .text {
@@ -283,6 +285,9 @@ export default {
             width: calc(33.333% - 25px);
             max-width: 526px;
             max-height: 992px;
+            .news-slider {
+                height: 100%;
+            }
         }
     }
 }

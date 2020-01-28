@@ -43,6 +43,7 @@ export default {
     },
     data() {
         return {
+            cnageVideoPreviewTickerID: null,
             activeId: null,
             prevActiveSlideId: null,
             slideDirection: "top"
@@ -50,17 +51,24 @@ export default {
     },
     mounted() {
         this.activeId = this.$props.previews[0].id;
-        setInterval(() => {
+        this.cnageVideoPreviewTickerID = setInterval(() => {
             const news = this.$props.previews;
-            const randomIndex = this.getRandomId(0, news.length - 1);
-
-            this.prevActiveSlideId = this.activeId;
-            this.activeId = news[randomIndex].id;
+            for (let i = 0; i < news.length; i++) {
+                if (news[i].id === this.activeId) {
+                    this.prevActiveSlideId = this.activeId;
+                    if (i === news.length - 1) {
+                        this.activeId = news[0].id;
+                    } else {
+                        this.activeId = news[++i].id;
+                    }
+                }
+            }
         }, 7500);
     },
     methods: {
         changeActiveNews(e, id) {
             if (this.activeId === id) return false;
+            clearInterval(this.changeActiveNews);
 
             this.slideDirection = id > this.activeId ? "top" : "bottom";
 
@@ -70,9 +78,6 @@ export default {
             e.target.classList.add("active");
             this.prevActiveSlideId = this.activeId;
             this.activeId = id;
-        },
-        getRandomId(min, max) {
-            return Math.floor(Math.random() * (max - min + 1)) + min;
         }
     }
 };
