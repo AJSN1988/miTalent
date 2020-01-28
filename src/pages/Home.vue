@@ -303,7 +303,8 @@ export default {
                         id: 1,
                         photo: "../static/news/top3/news_1.png",
                         text:
-                            "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laboriosam in aut quam perferendis repellendus itaque ducimus aliquid, architecto facilis perspiciatis?",
+                            "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laboriosam in aut quam" +
+                            "perferendis repellendus itaque ducimus aliquid, architecto facilis perspiciatis?",
                         date: "12 May 2020",
                         link: "#"
                     },
@@ -327,8 +328,7 @@ export default {
                 mainNews: {
                     id: 4,
                     photo: "../static/news/main_news.png",
-                    text:
-                        "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laboriosam in aut quam perferendis.",
+                    text: "Lorem ipsum dolor, sit amet consectetur.",
                     date: "1 May 2020",
                     link: "#"
                 },
@@ -338,7 +338,7 @@ export default {
                         photo:
                             "../static/news/news_slider-on_homepage/news_1.png",
                         text:
-                            "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laboriosam in aut quam perferendis.",
+                            "Motivation And Your Personal Vision An Unbeatable Force 1",
                         date: "14 March 2020",
                         link: "#"
                     },
@@ -347,7 +347,7 @@ export default {
                         photo:
                             "../static/news/news_slider-on_homepage/news_2.png",
                         text:
-                            "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laboriosam in aut quam perferendis.",
+                            "Motivation And Your Personal Vision An Unbeatable Force 2",
                         date: "15 March 2020",
                         link: "#"
                     },
@@ -356,7 +356,7 @@ export default {
                         photo:
                             "../static/news/news_slider-on_homepage/news_3.png",
                         text:
-                            "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laboriosam in aut quam perferendis.",
+                            "Motivation And Your Personal Vision An Unbeatable Force 3",
                         date: "13 March 2020",
                         link: "#"
                     },
@@ -365,7 +365,7 @@ export default {
                         photo:
                             "../static/news/news_slider-on_homepage/news_4.png",
                         text:
-                            "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laboriosam in aut quam perferendis.",
+                            "Motivation And Your Personal Vision An Unbeatable Force 4",
                         date: "12 March 2020",
                         link: "#"
                     }
@@ -374,7 +374,7 @@ export default {
                     id: 9,
                     photo: "./static/news/regular_on_homepage.png",
                     text:
-                        "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laboriosam in aut quam perferendis.",
+                        "Dream Interpretation Common Symbols And Their Meanings.",
                     date: "11 March 2020",
                     link: "#"
                 },
