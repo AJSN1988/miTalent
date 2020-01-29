@@ -43,7 +43,7 @@ export default {
     },
     data() {
         return {
-            cnageVideoPreviewTickerID: null,
+            changeVideoPreviewTickerID: null,
             activeId: null,
             prevActiveSlideId: null,
             slideDirection: "top"
@@ -51,7 +51,7 @@ export default {
     },
     mounted() {
         this.activeId = this.$props.previews[0].id;
-        this.cnageVideoPreviewTickerID = setInterval(() => {
+        this.changeVideoPreviewTickerID = setInterval(() => {
             const news = this.$props.previews;
             for (let i = 0; i < news.length; i++) {
                 if (news[i].id === this.activeId) {
@@ -68,7 +68,7 @@ export default {
     methods: {
         changeActiveNews(e, id) {
             if (this.activeId === id) return false;
-            clearInterval(this.changeActiveNews);
+            clearInterval(this.changeVideoPreviewTickerID);
 
             this.slideDirection = id > this.activeId ? "top" : "bottom";
 
@@ -90,6 +90,12 @@ export default {
     height: 21.979vw;
     overflow: hidden;
     position: relative;
+    @include screen-767 {
+        min-height: 55.019vw;
+    }
+    @include screen-768-999 {
+        height: 100%;
+    }
     .slide.active.top {
         top: 0;
         -webkit-animation: 0.7s linear 0s 1 alternate topToBottomSlideAnimation;
@@ -126,17 +132,27 @@ export default {
         img {
             width: 100%;
             height: 100%;
+            @include screen-767 {
+                height: auto;
+            }
         }
         .play-link {
             position: absolute;
-            left: 40px;
-            bottom: 50px;
+            // left: 40px;
+            left: 2.0833vw;
+            // bottom: 50px;
+            bottom: 2.6041vw;
             a {
+                text-decoration: none;
                 @include flex-row-nowrap;
                 img {
                     width: 90px;
                     height: 90px;
                     align-self: center;
+                    @include screen-459 {
+                        width: 70px;
+                        height: 70px;
+                    }
                 }
                 span {
                     padding-left: 30px;
@@ -151,13 +167,18 @@ export default {
     }
     .nav-dots {
         position: absolute;
-        height: 90px;
-        bottom: calc(50% - 45px);
+        // height: 90px;
+        // bottom: calc(50% - 45px);
+        height: 67.5px;
+        bottom: calc(50% - 33.75px);
         right: 0;
         z-index: 2;
         .dots-wrapper {
             height: 100%;
             padding: 0 33px;
+            @include screen-459 {
+                padding: 0 25px;
+            }
             @include flex-column-nowrap;
             align-items: flex-end;
             justify-content: space-between;

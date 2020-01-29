@@ -4,7 +4,7 @@
         <top-models :models="modelsForTopList" />
         <short-actors-catalog :actors-catalog="shortActorsCatalog" />
         <latest-news :news="news" />
-        <footer class="footer" />
+        <app-footer />
     </section>
 </template>
 
@@ -13,6 +13,7 @@ import MainHeader from "../components/Header.vue";
 import TopModels from "../components/TopModels.vue";
 import ShortActorsCatalog from "../components/ShortActorsCatalog.vue";
 import LatestNews from "../components/LatestNews.vue";
+import AppFooter from "../components/AppFooter.vue";
 
 export default {
     name: "HomeComponent",
@@ -20,7 +21,8 @@ export default {
         MainHeader,
         TopModels,
         ShortActorsCatalog,
-        LatestNews
+        LatestNews,
+        AppFooter
     },
     data() {
         return {

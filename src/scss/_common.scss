@@ -77,6 +77,12 @@ $catalogItemCover: #0d0d0ee6;
     }
 }
 
+@mixin screen-768-999 {
+    @media screen and (min-width: 768px) and (max-width: 999px) {
+        @content;
+    }
+}
+
 @mixin screen-1000-1919 {
     @media screen and (min-width: 1000px) and (max-width: 1919px) {
         @content;

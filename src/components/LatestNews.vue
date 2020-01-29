@@ -35,10 +35,9 @@
                             <img :src="news.regularNews.photo" alt="Regular news photo" />
                         </div>
                         <div class="description">
-                            <a
-                                class="text"
-                                :href="news.regularNews.link"
-                            >{{ news.regularNews.text }}</a>
+                            <div class="text">
+                                <a :href="news.regularNews.link">{{ news.regularNews.text }}</a>
+                            </div>
                             <div class="date">{{ news.regularNews.date }}</div>
                         </div>
                     </div>
@@ -95,7 +94,6 @@ export default {
 
 .latest-new-section {
     margin-top: 120px;
-    margin-bottom: 120px; // TEST
     .label {
         font-family: "PoppinsRegular", Arial, sans-serif;
         font-size: 3.75rem;
@@ -184,17 +182,32 @@ export default {
         }
         // min-height: 992px;
         @include flex-row-wrap;
+        // @include screen-999 {
+        //     flex-direction: column;
+        // }
         justify-content: space-between;
         .left-part {
             width: calc(66.666% - 25px);
             max-width: 1104px;
             @include flex-column-nowrap;
+            @include screen-999 {
+                width: 100%;
+            }
             .main-news {
                 max-height: 520px;
                 @include flex-row-nowrap;
+                @include screen-767 {
+                    flex-direction: column;
+                    max-height: initial;
+                }
                 position: relative;
                 .description {
                     width: 27%;
+                    @include screen-767 {
+                        width: 100%;
+                        padding: 0;
+                        justify-content: center;
+                    }
                     padding: 3vw;
                     @include flex-column-nowrap;
                     justify-content: flex-end;
@@ -208,18 +221,35 @@ export default {
                     a {
                         transition: 0.5s ease-in;
                         padding: 2.8vw 0;
+                        @include screen-767 {
+                            padding: 20px;
+                        }
                     }
                     .text {
                         font-family: "PoppinsMedium", Arial, sans-serif;
-                        font-size: 1.875em;
+                        // font-size: 1.875em;
+                        font-size: 1.5625vw;
                         padding-bottom: 38px;
+                        @include screen-767 {
+                            // font-size: 1.875em;
+                            padding: 0 20px 20px;
+                        }
+                        @include screen-999 {
+                            font-size: 1.875em;
+                        }
                     }
                     .date {
                         font-family: "NunitoExtraBold", Arial, sans-serif;
+                        @include screen-767 {
+                            padding: 0 20px 20px;
+                        }
                     }
                 }
                 .photo {
                     width: 73%;
+                    @include screen-767 {
+                        width: 100%;
+                    }
                     img {
                         width: 100%;
                         height: 100%;
@@ -230,7 +260,8 @@ export default {
                     right: 10px;
                     top: 10px;
                     background-color: $mainWhite;
-                    padding: 23px 58px;
+                    // padding: 23px 58px;
+                    padding: 1.1979vw 3.0208vw;
                     font-family: "NunitoExtraBold", Arial, sans-serif;
                     text-transform: uppercase;
                     font-size: 0.875em;
@@ -240,12 +271,24 @@ export default {
                 padding-top: 50px;
                 @include flex-row-wrap;
                 justify-content: space-between;
+                @include screen-999 {
+                    padding-top: 20px;
+                }
                 .regular-news {
                     width: calc(50% - 25px);
                     @include flex-column-nowrap;
+                    @include screen-767 {
+                        width: 100%;
+                    }
+                    @include screen-768-999 {
+                        width: calc(50% - 10px);
+                    }
                     .photo {
                         // height: 67.772%;
                         height: 14.8958vw;
+                        @include screen-999 {
+                            height: auto;
+                        }
                         img {
                             width: 100%;
                             height: 100%;
@@ -255,19 +298,31 @@ export default {
                         // height: 32.228%;
                         height: 7.0833vw;
                         @include flex-column-nowrap;
-                        justify-content: flex-end;
+                        justify-content: space-between;
+                        @include screen-999 {
+                            height: initial;
+                        }
                         .text {
                             font-family: "PoppinsMedium", Arial, sans-serif;
-                            font-size: 1.5em;
-                            padding-bottom: 20px;
+                            // font-size: 1.5em;
+                            // padding-bottom: 20px;
                             color: $textColor;
-                            &:link,
-                            &:visited {
-                                color: $textColor;
+                            font-size: 1.25vw;
+                            @include flex-column-nowrap;
+                            justify-content: center;
+                            height: 100%;
+                            @include screen-999 {
+                                font-size: 1.5em;
                             }
-                            text-decoration: none;
-                            &:hover {
-                                color: $hoveredLink;
+                            a {
+                                &:link,
+                                &:visited {
+                                    color: $textColor;
+                                }
+                                text-decoration: none;
+                                &:hover {
+                                    color: $hoveredLink;
+                                }
                             }
                         }
                         .date {
@@ -278,6 +333,13 @@ export default {
                 }
                 .video-news-slider {
                     width: calc(50% - 25px);
+                    @include screen-767 {
+                        width: 100%;
+                        padding-top: 20px;
+                    }
+                    @include screen-768-999 {
+                        width: calc(50% - 10px);
+                    }
                 }
             }
         }
@@ -285,8 +347,30 @@ export default {
             width: calc(33.333% - 25px);
             max-width: 526px;
             max-height: 992px;
+            @include screen-459 {
+                width: 100%;
+            }
+            @include screen-460-767 {
+                width: calc(75% - 10px);
+            }
+            @include screen-768-999 {
+                width: calc(50% - 10px);
+            }
+            @include screen-999 {
+                padding-top: 20px;
+                max-width: initial;
+            }
             .news-slider {
                 height: 100%;
+                @include screen-459 {
+                    height: 182vw;
+                }
+                @include screen-460-767 {
+                    height: 153vw;
+                }
+                @include screen-768-999 {
+                    height: 87vw;
+                }
             }
         }
     }

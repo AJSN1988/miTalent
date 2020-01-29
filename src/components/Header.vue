@@ -7,13 +7,6 @@
         </button>
         <nav class="horisontal-nav">
             <ul>
-                <!-- <li>
-                    <button class="burger-menu" @click="openMenu($event)">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </button>
-                </li>-->
                 <li>
                     <a href="#">Clients</a>
                 </li>
@@ -70,7 +63,6 @@ export default {
         border: none;
         outline: none;
         position: absolute;
-        // z-index: 11;
         &:hover {
             cursor: pointer;
         }
@@ -88,8 +80,6 @@ export default {
         span {
             &:nth-child(1) {
                 transform: translateY(7px) rotate(45deg);
-                // transition-delay: 0.5s;
-                // animation: openMenu 0.5s ease 0.5s 1 normal none;
             }
             &:nth-child(2) {
                 opacity: 0;
@@ -112,12 +102,6 @@ export default {
             padding: 0;
             margin: 0;
             li {
-                // &:not(:nth-child(1)) {
-                //     margin-left: 49px;
-                //     @include screen-899 {
-                //         display: none;
-                //     }
-                // }
                 margin-left: 49px;
                 @include screen-899 {
                     display: none;
@@ -139,7 +123,6 @@ export default {
         }
     }
     .logo {
-        // width: 33.333%;
         margin-top: -9px;
     }
     .search-form {
@@ -157,7 +140,6 @@ export default {
         height: calc(100vh - 167px);
         left: 0;
         top: 167px;
-        // z-index: 10;
         @include screen-899 {
             top: 60px;
             height: calc(100vh - 60px);

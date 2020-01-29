@@ -14,7 +14,9 @@
                 <img :src="slide.photo" :alt="`News ${slide.id} in slider photo`" />
             </div>
             <div class="description">
-                <a class="text" :href="slide.link">{{ slide.text }}</a>
+                <div class="text">
+                    <a :href="slide.link">{{ slide.text }}</a>
+                </div>
                 <div class="date">{{ slide.date }}</div>
             </div>
         </div>
@@ -127,28 +129,42 @@ export default {
         height: 100%;
         @include flex-column-nowrap;
         .photo {
-            height: 86.29%;
+            // height: 86.29%;
             img {
                 width: 100%;
-                height: 100%;
+                // height: 100%;
             }
         }
         .description {
-            height: 13.71%;
+            // height: 13.71%;
+            height: 100%;
             @include flex-column-nowrap;
-            justify-content: flex-end;
+            // justify-content: flex-end;
+            @include screen-999 {
+                height: auto;
+            }
+            justify-content: space-evenly;
             .text {
                 font-family: "PoppinsMedium", Arial, sans-serif;
-                font-size: 1.5em;
-                padding-bottom: 20px;
+                // font-size: 1.5em;
+                font-size: 1.25vw;
+                // padding-bottom: 20px;
                 color: $textColor;
-                &:link,
-                &:visited {
-                    color: $textColor;
+                @include flex-column-nowrap;
+                justify-content: center;
+                height: 100%;
+                @include screen-999 {
+                    font-size: 1.5em;
                 }
-                text-decoration: none;
-                &:hover {
-                    color: $hoveredLink;
+                a {
+                    &:link,
+                    &:visited {
+                        color: $textColor;
+                    }
+                    text-decoration: none;
+                    &:hover {
+                        color: $hoveredLink;
+                    }
                 }
             }
             .date {
@@ -160,8 +176,14 @@ export default {
     .nav-dots {
         position: absolute;
         width: 100%;
-        // bottom: 196px;
-        bottom: 19.758%;
+        bottom: 196px;
+        @include screen-767 {
+            bottom: 50vw;
+        }
+        @include screen-768-1279 {
+            bottom: 156px;
+        }
+        // bottom: 19.758%;
         z-index: 2;
         .dots-wrapper {
             margin: auto;
