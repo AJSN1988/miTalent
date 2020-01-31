@@ -24,18 +24,30 @@
         <div class="search-form">
             <img src="../assets/img/search.svg" alt="Search icon" width="20" />
         </div>
-        <div class="side-menu hidden" />
+        <div class="menu-wrapper" :class="{ hidden: !visibleMenu }">
+            <app-menu />
+        </div>
     </header>
 </template>
 
 <script>
+import AppMenu from "./AppMenu.vue";
+
 export default {
     name: "MainHeader",
+    components: {
+        AppMenu
+    },
+    computed: {
+        visibleMenu() {
+            return this.$store.state.showMenu;
+        }
+    },
     methods: {
         openMenu() {
-            document.querySelector(".burger-menu").classList.toggle("show");
-
-            document.querySelector(".side-menu").classList.toggle("hidden");
+            // document.querySelector(".burger-menu").classList.toggle("show");
+            // document.querySelector(".menu-wrapper").classList.toggle("hidden");
+            this.$store.commit("toggleMenu");
         }
     }
 };
@@ -132,21 +144,21 @@ export default {
             width: auto;
         }
     }
-    .side-menu {
+    .menu-wrapper {
         transition: 0.5s ease-in;
-        width: 320px;
-        position: fixed;
-        background-color: aquamarine;
-        height: calc(100vh - 167px);
-        left: 0;
-        top: 167px;
-        @include screen-899 {
-            top: 60px;
-            height: calc(100vh - 60px);
+        top: 0;
+        position: absolute;
+        width: 100%;
+        @include screen-999 {
+            left: -20px;
         }
     }
-    .side-menu.hidden {
-        left: -320px;
+    .menu-wrapper.hidden {
+        top: -200px;
+        @include screen-999 {
+            top: 0;
+            left: -220px;
+        }
     }
 }
 </style>

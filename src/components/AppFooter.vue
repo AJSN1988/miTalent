@@ -31,7 +31,7 @@
                         role="link"
                         @mouseenter="toggleIcon($event)"
                         @mouseleave="toggleIcon($event)"
-                        @click="goToModelSocial(model.links.facebook)"
+                        @click="goToModelSocial('https://facebook.com')"
                     >
                         <img src="../assets/img/facebook.svg" alt="Facebook social icon" width="16" />
                         <img
@@ -45,7 +45,7 @@
                         role="link"
                         @mouseenter="toggleIcon($event)"
                         @mouseleave="toggleIcon($event)"
-                        @click="goToModelSocial(model.links.instagram)"
+                        @click="goToModelSocial('https://instagram.com')"
                     >
                         <img
                             src="../assets/img/instagram.svg"
@@ -63,7 +63,7 @@
                         role="link"
                         @mouseenter="toggleIcon($event)"
                         @mouseleave="toggleIcon($event)"
-                        @click="goToModelSocial(model.links.youtube)"
+                        @click="goToModelSocial('https://youtube.com')"
                     >
                         <img src="../assets/img/youtube.svg" alt="Youtube social icon" width="16" />
                         <img
@@ -77,7 +77,7 @@
                         role="link"
                         @mouseenter="toggleIcon($event)"
                         @mouseleave="toggleIcon($event)"
-                        @click="goToModelSocial(model.links.twitter)"
+                        @click="goToModelSocial('https://twitter.com')"
                     >
                         <img src="../assets/img/twitter.svg" alt="Twitter social icon" width="16" />
                         <img
@@ -130,13 +130,28 @@ export default {
 .footer-section {
     margin: 169px 61px 49px;
     font-family: "NunitoRegular", Arial, sans-serif;
+    @include screen-767 {
+        margin: 150px 20px 49px;
+    }
     .top {
         @include flex-row-wrap;
         justify-content: space-between;
+        .logo {
+            @include screen-767 {
+                width: 100%;
+                text-align: center;
+            }
+        }
         .subscribe {
             border-left: 2px solid $mainButtonColor;
             @include flex-row-wrap;
             justify-content: center;
+            @include screen-767 {
+                width: 100%;
+                max-width: 280px;
+                margin: auto;
+                margin-top: 20px;
+            }
             &:hover {
                 cursor: pointer;
                 border-color: $textColor;
@@ -147,6 +162,9 @@ export default {
                 text-transform: uppercase;
                 align-self: center;
                 padding: 0 50px;
+                @include screen-767 {
+                    padding: 0 20px;
+                }
             }
             .icon {
                 align-self: center;
@@ -162,6 +180,11 @@ export default {
         justify-content: space-between;
         .copyright {
             font-size: 0.9375em;
+            color: $greyTextColor;
+            @include screen-767 {
+                width: 100%;
+                margin-bottom: 20px;
+            }
         }
         .socials {
             ul {
@@ -172,6 +195,9 @@ export default {
                 justify-content: space-evenly;
                 li {
                     align-self: center;
+                    &:not(:first-child) {
+                        padding-left: 40px;
+                    }
                     img.hovered {
                         display: none;
                     }

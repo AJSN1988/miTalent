@@ -49,6 +49,8 @@ module.exports = {
         "no-console": "off",
         "operator-linebreak": "off",
         "arrow-parens": "off",
-        "no-plusplus": "off"
+        "no-plusplus": "off",
+        "no-param-reassign": "off",
+        "no-new": "off"
     }
 };
