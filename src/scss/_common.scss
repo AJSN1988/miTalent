@@ -57,6 +57,7 @@ $menuBackground: #d3dcdc;
 $menuTileBackground1: rgba(180, 211, 211, 0.86);
 $menuTileBackground2: rgba(145, 145, 150, 0.49);
 $menuHrColor: #88d0d0;
+$menuLinkSMBackground: #b4d3d3;
 
 @mixin mainBackground {
     background: linear-gradient(270deg, rgba(181,212,212,1) 0%, rgba(216,230,230,1) 100%);
@@ -167,6 +168,12 @@ $menuHrColor: #88d0d0;
 
 @mixin screen-h-720 {
     @media screen and (max-height: 720px) {
+        @content;
+    }
+}
+
+@mixin screen-h-799 {
+    @media screen and (max-height: 799px) {
         @content;
     }
 }

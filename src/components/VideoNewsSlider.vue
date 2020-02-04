@@ -46,7 +46,8 @@ export default {
             changeVideoPreviewTickerID: null,
             activeId: null,
             prevActiveSlideId: null,
-            slideDirection: "top"
+            slideDirection: "top",
+            lockNav: false
         };
     },
     mounted() {
@@ -67,7 +68,8 @@ export default {
     },
     methods: {
         changeActiveNews(e, id) {
-            if (this.activeId === id) return false;
+            if (this.activeId === id || this.lockNav) return false;
+            this.lockNav = true;
             clearInterval(this.changeVideoPreviewTickerID);
 
             this.slideDirection = id > this.activeId ? "top" : "bottom";
@@ -78,6 +80,9 @@ export default {
             e.target.classList.add("active");
             this.prevActiveSlideId = this.activeId;
             this.activeId = id;
+            setTimeout(() => {
+                this.lockNav = false;
+            }, 800);
         }
     }
 };

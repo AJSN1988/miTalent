@@ -7,11 +7,8 @@
         </button>
         <nav class="horisontal-nav">
             <ul>
-                <li>
-                    <a href="#">Clients</a>
-                </li>
-                <li>
-                    <a href="#">News</a>
+                <li v-for="(link, index) in options.navLinks" :key="index">
+                    <router-link :to="link.link" :style="navLinksStyle">{{ link.name }}</router-link>
                 </li>
             </ul>
         </nav>
@@ -25,7 +22,7 @@
             <img src="../assets/img/search.svg" alt="Search icon" width="20" />
         </div>
         <div class="menu-wrapper" :class="{ hidden: !visibleMenu }">
-            <app-menu />
+            <app-menu :items="options.menuItems" />
         </div>
     </header>
 </template>
@@ -38,15 +35,25 @@ export default {
     components: {
         AppMenu
     },
+    props: {
+        options: {
+            type: Object,
+            required: true
+        }
+    },
     computed: {
         visibleMenu() {
             return this.$store.state.showMenu;
+        },
+        navLinksStyle() {
+            return {
+                "--color": this.$props.options.colors.idle,
+                "--color-hover": this.$props.options.colors.hover
+            };
         }
     },
     methods: {
         openMenu() {
-            // document.querySelector(".burger-menu").classList.toggle("show");
-            // document.querySelector(".menu-wrapper").classList.toggle("hidden");
             this.$store.commit("toggleMenu");
         }
     }
@@ -120,14 +127,12 @@ export default {
                 }
                 text-transform: uppercase;
                 a {
-                    &:link {
-                        color: $textColor;
-                    }
+                    &:link,
                     &:visited {
-                        color: $textColor;
+                        color: var(--color);
                     }
                     &:hover {
-                        color: $hoveredLink;
+                        color: var(--color-hover);
                     }
                     text-decoration: none;
                 }

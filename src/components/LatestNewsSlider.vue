@@ -48,7 +48,8 @@ export default {
             changeLatestNewsTickerId: null,
             prevActiveSlideId: null,
             activeId: null,
-            slideDirection: "right"
+            slideDirection: "right",
+            lockNav: false
         };
     },
     mounted() {
@@ -69,7 +70,8 @@ export default {
     },
     methods: {
         changeActiveNews(e, id) {
-            if (this.activeId === id) return false;
+            if (this.activeId === id || this.lockNav) return false;
+            this.lockNav = true;
             clearInterval(this.changeLatestNewsTickerId);
 
             this.slideDirection = id > this.activeId ? "right" : "left";
@@ -80,6 +82,9 @@ export default {
             e.target.classList.add("active");
             this.prevActiveSlideId = this.activeId;
             this.activeId = id;
+            setTimeout(() => {
+                this.lockNav = false;
+            }, 800);
         }
     }
 };
@@ -89,7 +94,6 @@ export default {
 @import "../scss/_common.scss";
 
 .news-slider-section {
-    // height: 51.6666vw;
     height: 100%;
     overflow: hidden;
     position: relative;
@@ -129,26 +133,20 @@ export default {
         height: 100%;
         @include flex-column-nowrap;
         .photo {
-            // height: 86.29%;
             img {
                 width: 100%;
-                // height: 100%;
             }
         }
         .description {
-            // height: 13.71%;
             height: 100%;
             @include flex-column-nowrap;
-            // justify-content: flex-end;
             @include screen-999 {
                 height: auto;
             }
             justify-content: space-evenly;
             .text {
                 font-family: "PoppinsMedium", Arial, sans-serif;
-                // font-size: 1.5em;
                 font-size: 1.25vw;
-                // padding-bottom: 20px;
                 color: $textColor;
                 @include flex-column-nowrap;
                 justify-content: center;
@@ -183,7 +181,6 @@ export default {
         @include screen-768-1279 {
             bottom: 156px;
         }
-        // bottom: 19.758%;
         z-index: 2;
         .dots-wrapper {
             margin: auto;
