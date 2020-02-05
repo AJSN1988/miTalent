@@ -130,7 +130,6 @@ export default {
                 flex-wrap: wrap;
             }
             .photo {
-                // width: 200px;
                 img {
                     @include screen-999 {
                         padding-top: 10px;
@@ -180,11 +179,7 @@ export default {
         @include screen-1279 {
             margin: 50px 20px 0;
         }
-        // min-height: 992px;
         @include flex-row-wrap;
-        // @include screen-999 {
-        //     flex-direction: column;
-        // }
         justify-content: space-between;
         .left-part {
             width: calc(66.666% - 25px);
@@ -237,6 +232,9 @@ export default {
                         @include screen-999 {
                             font-size: 1.875em;
                         }
+                        @include screen-min-1920 {
+                            font-size: 1.875em;
+                        }
                     }
                     .date {
                         font-family: "NunitoExtraBold", Arial, sans-serif;
@@ -260,11 +258,13 @@ export default {
                     right: 10px;
                     top: 10px;
                     background-color: $mainWhite;
-                    // padding: 23px 58px;
                     padding: 1.1979vw 3.0208vw;
                     font-family: "NunitoExtraBold", Arial, sans-serif;
                     text-transform: uppercase;
                     font-size: 0.875em;
+                    @include screen-min-1920 {
+                        padding: 23px 58px;
+                    }
                 }
             }
             .bottom-container {
@@ -284,7 +284,7 @@ export default {
                         width: calc(50% - 10px);
                     }
                     .photo {
-                        // height: 67.772%;
+                        max-height: 286px;
                         height: 14.8958vw;
                         @include screen-999 {
                             height: auto;
@@ -295,23 +295,26 @@ export default {
                         }
                     }
                     .description {
-                        // height: 32.228%;
                         height: 7.0833vw;
                         @include flex-column-nowrap;
                         justify-content: space-between;
                         @include screen-999 {
                             height: initial;
                         }
+                        @include screen-min-1920 {
+                            height: 136px;
+                        }
                         .text {
                             font-family: "PoppinsMedium", Arial, sans-serif;
-                            // font-size: 1.5em;
-                            // padding-bottom: 20px;
                             color: $textColor;
                             font-size: 1.25vw;
                             @include flex-column-nowrap;
                             justify-content: center;
                             height: 100%;
                             @include screen-999 {
+                                font-size: 1.5em;
+                            }
+                            @include screen-min-1920 {
                                 font-size: 1.5em;
                             }
                             a {

@@ -154,6 +154,9 @@ export default {
                 @include screen-999 {
                     font-size: 1.5em;
                 }
+                @include screen-min-1920 {
+                    font-size: 1.5em;
+                }
                 a {
                     &:link,
                     &:visited {

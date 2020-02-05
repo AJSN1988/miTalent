@@ -45,6 +45,7 @@
 // 1. Colors
 
 $mainWhite: #ffffff;
+$mainBlue: #b4d3d3;
 $navLinkColor: #919196;
 $textColor: #29292c;
 $greyTextColor: #96969b;
@@ -58,6 +59,7 @@ $menuTileBackground1: rgba(180, 211, 211, 0.86);
 $menuTileBackground2: rgba(145, 145, 150, 0.49);
 $menuHrColor: #88d0d0;
 $menuLinkSMBackground: #b4d3d3;
+$descriptionBackground: #eeeeee;
 
 @mixin mainBackground {
     background: linear-gradient(270deg, rgba(181,212,212,1) 0%, rgba(216,230,230,1) 100%);

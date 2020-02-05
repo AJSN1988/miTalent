@@ -93,6 +93,7 @@ export default {
 
 .video-news-slider-section {
     height: 21.979vw;
+    max-height: 422px;
     overflow: hidden;
     position: relative;
     @include screen-767 {
