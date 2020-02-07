@@ -108,6 +108,18 @@ $descriptionBackground: #eeeeee;
     }
 }
 
+@mixin screen-1280-1919 {
+    @media screen and (min-width: 1280px) and (max-width: 1919px) {
+        @content;
+    }
+}
+
+@mixin screen-1440-1919 {
+    @media screen and (min-width: 1440px) and (max-width: 1919px) {
+        @content;
+    }
+}
+
 // 2.3 Min width
 
 @mixin  screen-min-1280 {
@@ -176,6 +188,12 @@ $descriptionBackground: #eeeeee;
 
 @mixin screen-h-799 {
     @media screen and (max-height: 799px) {
+        @content;
+    }
+}
+
+@mixin screen-h-1023 {
+    @media screen and (max-height: 1023px) {
         @content;
     }
 }
