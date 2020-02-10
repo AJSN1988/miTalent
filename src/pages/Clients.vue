@@ -2,6 +2,8 @@
     <section class="home container">
         <main-header :options="headerOptions" />
         <top-models :models="models" />
+        <actors-catalog :actors="actors" />
+        <stories />
         <app-footer />
     </section>
 </template>
@@ -9,9 +11,12 @@
 <script>
 import MenuData from "../data/menu";
 import ModelsData from "../data/models";
+import ActorsData from "../data/actors";
 
 import MainHeader from "../components/Header.vue";
 import TopModels from "../components/TopModelsClients.vue";
+import ActorsCatalog from "../components/ActorsCatalog.vue";
+import Stories from "../components/Stories.vue";
 import AppFooter from "../components/AppFooter.vue";
 
 export default {
@@ -19,6 +24,8 @@ export default {
     components: {
         MainHeader,
         TopModels,
+        ActorsCatalog,
+        Stories,
         AppFooter
     },
     data() {
@@ -31,7 +38,8 @@ export default {
                     hover: "#b4d3d3"
                 }
             },
-            models: ModelsData
+            models: ModelsData,
+            actors: ActorsData
         };
     }
 };

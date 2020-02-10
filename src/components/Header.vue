@@ -82,6 +82,7 @@ export default {
         border: none;
         outline: none;
         position: absolute;
+        background: none;
         &:hover {
             cursor: pointer;
         }

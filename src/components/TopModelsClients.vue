@@ -388,6 +388,12 @@ export default {
     }
     height: 100vh;
     margin-top: -181px;
+    @include screen-767 {
+        max-height: initial;
+        height: 100%;
+        flex-direction: column;
+        padding-bottom: 240px;
+    }
     @include screen-1279 {
         margin-top: -99px;
     }
@@ -420,7 +426,8 @@ export default {
             min-height: 380px;
         }
         @include screen-1279 {
-            margin: 123px 0;
+            // margin: 123px 0;
+            margin: 123px 0 0;
             flex-wrap: wrap;
         }
         .info-part {
@@ -428,7 +435,6 @@ export default {
             @include flex-row-nowrap;
             @include screen-767 {
                 width: 100%;
-                // flex-wrap: wrap;
                 flex-direction: column-reverse;
                 justify-content: flex-end;
             }
@@ -539,6 +545,9 @@ export default {
                     }
                 }
                 .info {
+                    @include screen-599 {
+                        text-align: center;
+                    }
                     @include screen-768-1279 {
                         margin-left: 71px;
                     }
@@ -562,6 +571,9 @@ export default {
                     .annotation {
                         font-family: "NunitoSemiBold", Arial, sans-serif;
                         font-size: 1.0625em;
+                        @include screen-599 {
+                            text-align: center;
+                        }
                         @include screen-1280-1919 {
                             font-size: 0.8854vw;
                         }
@@ -578,6 +590,9 @@ export default {
                         background-color: $mainBlue;
                         margin: 0;
                         position: absolute;
+                        @include screen-599 {
+                            display: none;
+                        }
                     }
                 }
                 button {
@@ -611,6 +626,11 @@ export default {
             width: 33.8021%;
             @include flex-column-nowrap;
             position: relative;
+            @include screen-767 {
+                width: 100%;
+                height: 100vw;
+                max-height: 542px;
+            }
             @include screen-768-1279 {
                 margin-right: 20px;
                 position: absolute;
@@ -644,6 +664,11 @@ export default {
                 position: absolute;
                 overflow: hidden;
                 top: 100%;
+                @include screen-767 {
+                    max-height: 220px;
+                    height: 220px;
+                    @include flex-column-nowrap;
+                }
                 @include screen-768-1279 {
                     height: 150px;
                 }
@@ -653,6 +678,9 @@ export default {
                     position: absolute;
                     @include flex-row-nowrap;
                     transition: 0.7s linear;
+                    @include screen-767 {
+                        height: 150px;
+                    }
                     .model-description {
                         width: 100%;
                         height: 100%;
@@ -670,6 +698,9 @@ export default {
                         .name {
                             font-family: "PoppinsMedium", Arial, sans-serif;
                             font-size: 2.625em;
+                            @include screen-767 {
+                                font-size: 2em;
+                            }
                             @include screen-768-1279 {
                                 font-size: 3.2832vw;
                             }
@@ -677,6 +708,9 @@ export default {
                         }
                         .description,
                         .name {
+                            @include screen-767 {
+                                padding-left: 20px;
+                            }
                             @include screen-768-1279 {
                                 padding-left: 15px;
                             }
@@ -688,8 +722,16 @@ export default {
                 }
                 .nav {
                     position: absolute;
-
                     height: 100%;
+                    @include screen-767 {
+                        position: relative;
+                        height: 70px;
+                        width: 150px;
+                        margin-top: 150px;
+                        margin-left: 0;
+                        @include flex-row-nowrap;
+                        justify-content: space-evenly;
+                    }
                     @include screen-min-1280 {
                         width: 5.9895vw;
                         max-width: 115px;
@@ -704,8 +746,17 @@ export default {
                         background: none;
                         border: none;
                         outline: none;
+                        @include screen-767 {
+                            padding: 15px;
+                            transform: rotate(-90deg);
+                        }
                         &:hover {
                             cursor: pointer;
+                        }
+                        img {
+                            @include screen-767 {
+                                width: 25px;
+                            }
                         }
                     }
                 }
