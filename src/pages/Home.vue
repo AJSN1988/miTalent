@@ -4,7 +4,9 @@
         <top-models :models="modelsForTopList" />
         <short-actors-catalog :actors-catalog="shortActorsCatalog" />
         <latest-news :news="news" />
-        <app-footer />
+        <div class="footer">
+            <app-footer />
+        </div>
     </section>
 </template>
 
@@ -51,5 +53,8 @@ export default {
 .container {
     max-width: 1920px;
     margin: auto;
+    .footer {
+        margin: 169px 61px 49px;
+    }
 }
 </style>

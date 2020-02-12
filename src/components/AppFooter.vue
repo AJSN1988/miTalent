@@ -128,7 +128,7 @@ export default {
 @import "../scss/_common.scss";
 
 .footer-section {
-    margin: 169px 61px 49px;
+    // margin: 169px 61px 49px;
     font-family: "NunitoRegular", Arial, sans-serif;
     @include screen-767 {
         margin: 150px 20px 49px;

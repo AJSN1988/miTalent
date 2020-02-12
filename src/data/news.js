@@ -1,5 +1,5 @@
 export default {
-    topThree: [
+    hotNews: [
         {
             id: 1,
             photo: "../static/news/top3/news_1.png",
@@ -23,6 +23,31 @@ export default {
             text:
                 "Lorem ipsum dolor, amet consectetur adipisicing.",
             date: "3 May 2020",
+            link: "#"
+        },
+        {
+            id: 13,
+            photo: "../static/news/top3/news_3.png",
+            text:
+                "Lorem ipsum dolor, amet consectetur adipisicing.",
+            date: "3 May 2020",
+            link: "#"
+        },
+        {
+            id: 14,
+            photo: "../static/news/top3/news_2.png",
+            text:
+                "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laboriosam in aut quam perferendis.",
+            date: "9 May 2020",
+            link: "#"
+        },
+        {
+            id: 15,
+            photo: "../static/news/top3/news_1.png",
+            text:
+                "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laboriosam in aut quam" +
+                "perferendis repellendus itaque ducimus aliquid, architecto facilis perspiciatis?",
+            date: "12 May 2020",
             link: "#"
         }
     ],

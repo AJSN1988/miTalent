@@ -128,10 +128,7 @@ export default {
                 }
                 text-transform: uppercase;
                 a {
-                    &:link,
-                    &:visited {
-                        color: var(--color);
-                    }
+                    color: var(--color);
                     &:hover {
                         color: var(--color-hover);
                     }
