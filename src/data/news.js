@@ -58,6 +58,29 @@ export default {
         date: "1 May 2020",
         link: "#"
     },
+    featuredNews: [
+        {
+            id: 16,
+            photo: "../static/news/featured_news_3.png",
+            text: "A starter guide to self improvement 1",
+            date: "22 May 2020",
+            link: "#"
+        },
+        {
+            id: 17,
+            photo: "../static/news/featured_news_2.png",
+            text: "A starter guide to self improvement 2",
+            date: "23 May 2020",
+            link: "#"
+        },
+        {
+            id: 18,
+            photo: "../static/news/featured_news.png",
+            text: "A starter guide to self improvement 3",
+            date: "24 May 2020",
+            link: "#"
+        }
+    ],
     newsSlider: [
         {
             id: 5,
