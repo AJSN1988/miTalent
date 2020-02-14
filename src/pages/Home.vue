@@ -50,11 +50,15 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "../scss/_common.scss";
 .container {
     max-width: 1920px;
     margin: auto;
     .footer {
         margin: 169px 61px 49px;
+        @include screen-767 {
+            margin: 169px 0 49px;
+        }
     }
 }
 </style>

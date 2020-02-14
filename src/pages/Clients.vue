@@ -82,6 +82,9 @@ export default {
     }
     .footer {
         margin: 129px 61px 49px;
+        @include screen-767 {
+            margin: 129px 0 49px;
+        }
     }
 }
 </style>

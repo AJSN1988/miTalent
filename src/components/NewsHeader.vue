@@ -74,7 +74,7 @@ export default {
     font-family: "NunitoExtraBold", Arial, sans-serif;
     @include flex-row-wrap;
     justify-content: space-between;
-    margin: 76px 61px 76px auto;
+    margin: 76px 61px 88px auto;
 
     z-index: 10;
     max-width: 994px;

@@ -18,7 +18,6 @@
                             {{ fNews.text }}
                             <hr />
                         </div>
-                        <!-- <hr /> -->
                     </div>
                 </div>
                 <div class="news-controls">
@@ -59,7 +58,7 @@
                             />
                         </button>
                     </div>
-                    <button>
+                    <button class="read-button">
                         <span>Read more</span>
                         <div class="arrow">
                             <img src="../assets/img/arrow_up.svg" alt="Arrow icon" width="18" />
@@ -68,13 +67,42 @@
                 </div>
             </div>
         </div>
-        <div class="other-news-wrapper"></div>
+        <div class="other-news-wrapper">
+            <div class="recent-news">
+                <div class="left-part">
+                    <news-slider :news-for-slider="news.newsSlider" />
+                </div>
+                <div class="right-part">
+                    <div v-for="hNews in news.hotNews.slice(0, 4)" :key="hNews.id" class="hot-news">
+                        <div
+                            :style="{
+                                background: `no-repeat url(${hNews.photo})`,
+                                backkgroundSize: 'cover',
+                                backgroundPosition: 'center'
+                            }"
+                            class="photo"
+                        />
+                        <div class="info">
+                            <a :href="hNews.link" class="text">{{ reduceNewsText(hNews.text, 35) }}</a>
+                            <div class="date">{{ hNews.date }}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="main-news"></div>
+            <div class="all-news"></div>
+        </div>
     </section>
 </template>
 
 <script>
+import NewsSlider from "./RecentNewsSlider.vue";
+
 export default {
     name: "NewsComponent",
+    components: {
+        NewsSlider
+    },
     props: {
         news: {
             type: Object,
@@ -85,6 +113,13 @@ export default {
         return {
             activeFeaturedNewsIndex: 0
         };
+    },
+    methods: {
+        reduceNewsText(text, length) {
+            return text.length > length
+                ? `${text.substring(0, length)}...`
+                : text;
+        }
     }
 };
 </script>
@@ -105,11 +140,12 @@ export default {
         margin-right: 0;
     }
     .featured-news-wrapper {
-        width: 41.0416%;
+        // width: 41.0416%;
+        width: 42.549%;
         height: 56.25vw;
-        min-height: 900px;
+        min-height: 568px;
         max-height: 1080px;
-        margin-top: -181px;
+        margin-top: -193px;
         @include screen-1279 {
             width: 100%;
             max-width: 768px;
@@ -136,6 +172,10 @@ export default {
                     justify-content: center;
                     color: $mainWhite;
                     position: relative;
+                    @include screen-767 {
+                        padding-bottom: 140px;
+                        height: calc(100% - 140px);
+                    }
                     .label {
                         font-family: "NunitoExtraBold", Arial, sans-serif;
                         font-size: 0.875em;
@@ -167,6 +207,9 @@ export default {
                             top: 50%;
                             left: 100%;
                             margin: 0;
+                            @include screen-1279 {
+                                display: none;
+                            }
                         }
                     }
                 }
@@ -176,12 +219,20 @@ export default {
             position: absolute;
             bottom: 0;
             width: 100%;
-            @include flex-row-nowrap;
+            @include flex-row-wrap;
             height: 110px;
+            @include screen-767 {
+                height: auto;
+            }
             .navs {
                 width: 50%;
                 @include flex-row-nowrap;
                 justify-content: center;
+                @include screen-767 {
+                    width: 100%;
+                    order: 2;
+                    height: 70px;
+                }
                 button {
                     background: none;
                     border: none;
@@ -197,10 +248,13 @@ export default {
                     }
                     img {
                         transform: rotate(90deg);
+                        @include screen-767 {
+                            width: 30px;
+                        }
                     }
                 }
             }
-            button {
+            .read-button {
                 width: 50%;
                 background-color: $mainWhite;
                 border: none;
@@ -212,16 +266,29 @@ export default {
                 font-size: 0.875em;
                 text-transform: uppercase;
                 letter-spacing: 1.5px;
+                @include screen-767 {
+                    width: 270px;
+                    height: 70px;
+                    order: 1;
+                }
                 &:hover {
                     cursor: pointer;
                 }
+
                 span {
                     width: calc(100% - 110px);
                     align-self: center;
+                    @include screen-767 {
+                        width: 100%;
+                    }
                 }
                 .arrow {
                     align-self: center;
                     width: 5.7291vw;
+                    @include screen-767 {
+                        padding-right: 25px;
+                        padding-top: 5px;
+                    }
                     img {
                         transform: rotate(90deg);
                     }
@@ -230,9 +297,152 @@ export default {
         }
     }
     .other-news-wrapper {
-        width: 49.5833%;
+        // width: 49.5833%;
+        width: 52.743%;
+        @include flex-column-nowrap;
         @include screen-1279 {
             width: 100%;
+        }
+        .recent-news {
+            @include flex-row-wrap;
+            justify-content: space-between;
+            width: 100%;
+            @include screen-767 {
+                flex-direction: column;
+            }
+            @include screen-1279 {
+                width: calc(100% - 40px);
+                margin: 50px 20px 0;
+                justify-content: flex-end;
+            }
+            .left-part {
+                width: calc(50% - 25px);
+                max-width: 451px;
+                height: 741px;
+                @include screen-767 {
+                    width: 100%;
+                    align-self: center;
+                    margin-right: 0;
+                    min-height: 520px;
+                    max-height: 741px;
+                    height: 160vw;
+                }
+                @include screen-768-999 {
+                    height: 741px;
+                    width: calc(60% - 25px);
+                }
+                @include screen-768-1279 {
+                    margin-right: 50px;
+                }
+                @include screen-1280-1599 {
+                    height: 46.342vw;
+                    width: calc(60% - 25px);
+                }
+                img {
+                    height: 604px;
+                }
+            }
+            .right-part {
+                width: calc(50% - 25px);
+                height: 741px;
+                max-width: 451px;
+                @include flex-column-nowrap;
+                justify-content: space-between;
+                @include screen-459 {
+                    height: fit-content;
+                }
+                @include screen-767 {
+                    width: fit-content;
+                    align-self: center;
+                    margin-top: 50px;
+                }
+                @include screen-768-999 {
+                    width: 180px;
+                    height: fit-content;
+                }
+                @include screen-1280-1599 {
+                    width: calc(40% - 25px);
+                    height: fit-content;
+                }
+                .hot-news {
+                    @include flex-row-nowrap;
+                    justify-content: space-between;
+                    height: 18.8933%;
+                    @include screen-459 {
+                        height: fit-content;
+                        flex-direction: column;
+                        &:not(:last-child) {
+                            margin-bottom: 50px;
+                        }
+                    }
+                    @include screen-768-999 {
+                        height: fit-content;
+                        flex-direction: column;
+                        &:not(:last-child) {
+                            margin-bottom: 50px;
+                        }
+                    }
+                    @include screen-1280-1599 {
+                        height: fit-content;
+                        flex-direction: column;
+                        &:not(:last-child) {
+                            margin-bottom: 50px;
+                        }
+                    }
+                    .photo {
+                        // width: 180px;
+                        width: 39.9113%;
+                        height: 100%;
+                        @include screen-459 {
+                            width: 100%;
+                            height: 140px;
+                            max-width: 180px;
+                        }
+                        @include screen-768-999 {
+                            width: 100%;
+                            height: 140px;
+                            max-width: 180px;
+                        }
+                        @include screen-1280-1599 {
+                            width: 100%;
+                            height: 140px;
+                            max-width: 180px;
+                        }
+                    }
+                    .info {
+                        // width: 230px;
+                        width: 51%;
+                        @include flex-column-nowrap;
+                        justify-content: space-between;
+                        @include screen-459 {
+                            width: 100%;
+                        }
+                        @include screen-768-999 {
+                            width: 100%;
+                        }
+                        @include screen-1280-1599 {
+                            width: 100%;
+                        }
+                        .text {
+                            font-family: "PoppinsMedium", Arial, sans-serif;
+                            font-size: 1.5em;
+                            text-decoration: none;
+                            color: $textColor;
+                            &:hover {
+                                color: $hoveredLink;
+                            }
+                        }
+                        .date {
+                            font-family: "NunitoRegular", Arial, sans-serif;
+                            color: $greyTextColor;
+                        }
+                    }
+                }
+            }
+        }
+        .main-news {
+        }
+        .all-news {
         }
     }
 }
