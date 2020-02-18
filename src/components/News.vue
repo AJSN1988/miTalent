@@ -89,14 +89,129 @@
                     </div>
                 </div>
             </div>
-            <div class="main-news"></div>
-            <div class="all-news"></div>
+            <div class="main-news">
+                <div
+                    :style="{
+                        background: `url(${news.mainNews.photo})`,
+                        backgroundSize: 'cover',
+                        backgroundPosition: 'center'
+                    }"
+                    class="photo"
+                />
+                <div class="description">
+                    <a :href="news.mainNews.link">{{ news.mainNews.text }}</a>
+                    <div class="date">{{ news.mainNews.date }}</div>
+                </div>
+                <div class="static-label">Trending</div>
+            </div>
+            <div class="all-news-slider">
+                <div class="slider-wrapper">
+                    <div v-for="(page, index) in newsPages" :key="index" class="page">
+                        <div v-if="index === currentNewsPage" class="item-wrapper">
+                            <div
+                                v-for="(newsItem, itemIndex) in page"
+                                :key="itemIndex"
+                                class="item"
+                            >
+                                <div
+                                    :style="{
+                                        background: `url(${newsItem.photo})`,
+                                        backgroundSize: 'cover',
+                                        backgroundPosition: 'center'
+                                    }"
+                                    class="photo"
+                                />
+                                <div class="description">
+                                    <a
+                                        :href="news.mainNews.link"
+                                    >{{ reduceNewsText(newsItem.text, 37) }}</a>
+                                    <div class="date">{{ newsItem.date }}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="controls">
+                    <button v-if="currentNewsPage === 0" class="prev inactive">
+                        <img
+                            src="../assets/img/arrow_down_grey.svg"
+                            alt="Inactive prev page button icon"
+                            width="25"
+                        />
+                        <span>Prev page</span>
+                    </button>
+                    <button v-if="currentNewsPage > 0" class="prev" @click="currentNewsPage--">
+                        <img
+                            src="../assets/img/arrow_down.svg"
+                            alt="Prev page button icon"
+                            width="25"
+                        />
+                        <span>Prev page</span>
+                    </button>
+                    <button v-if="currentNewsPage === newsPages.length - 1" class="next inactive">
+                        <span>Next page</span>
+                        <img
+                            src="../assets/img/arrow_up_grey.svg"
+                            alt="Inactive next page button icon"
+                            width="25"
+                        />
+                    </button>
+                    <button
+                        v-if="currentNewsPage < newsPages.length - 1"
+                        class="next"
+                        @click="currentNewsPage++"
+                    >
+                        <span>Next page</span>
+                        <img
+                            src="../assets/img/arrow_down.svg"
+                            alt="Nexts page button icon"
+                            width="25"
+                        />
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="clients-wrapper">
+            <div class="info">
+                <div class="clients-header">Our clients</div>
+                <div class="description">
+                    <div
+                        class="text"
+                    >Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dignissimos consequuntur cupiditate unde quidem debitis saepe.</div>
+                    <a href="#">
+                        <span>Explore more</span>
+                        <img src="../assets/img/arrow_up.svg" alt="Arrow icon" width="18" />
+                    </a>
+                </div>
+            </div>
+            <div class="clients-list">
+                <div
+                    v-for="actor in shortActors"
+                    :key="actor.uid"
+                    class="client"
+                    @mouseenter="toggleClientCover($event)"
+                    @mouseleave="toggleClientCover($event)"
+                >
+                    <img :src="actor.photo" :alt="`${actor.name} photo`" />
+                    <div class="cover">
+                        <div class="link" role="link" @click="goToClientPage(actor.uid)">
+                            <img src="../assets/img/diagonal-arrow.svg" alt="Arrow icon" width="14" />
+                        </div>
+                        <div class="info">
+                            <div class="name">{{ actor.name }}</div>
+                            <div class="description">{{ actor.description }}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 </template>
 
 <script>
 import NewsSlider from "./RecentNewsSlider.vue";
+
+import Actors from "../data/actors";
 
 export default {
     name: "NewsComponent",
@@ -111,14 +226,37 @@ export default {
     },
     data() {
         return {
-            activeFeaturedNewsIndex: 0
+            activeFeaturedNewsIndex: 0,
+            currentNewsPage: 0,
+            newsPages: [],
+            shortActors: Actors[0].people.slice(0, 4)
         };
+    },
+    mounted() {
+        // Paginate all news
+        for (let i = 0; i < this.news.allNews.length; i += 4) {
+            this.newsPages.push(this.news.allNews.slice(i, i + 4));
+        }
     },
     methods: {
         reduceNewsText(text, length) {
             return text.length > length
                 ? `${text.substring(0, length)}...`
                 : text;
+        },
+        toggleClientCover(e) {
+            const element = e.target.querySelector(".cover");
+            element.classList.add("hovered");
+
+            if (
+                e.type === "mouseleave" &&
+                element.classList.contains("hovered")
+            ) {
+                element.classList.remove("hovered");
+            }
+        },
+        goToClientPage(id) {
+            console.log(id);
         }
     }
 };
@@ -130,17 +268,10 @@ export default {
     @include flex-row-wrap;
     justify-content: space-between;
     margin-right: 100px;
-    // @include screen-767 {
-    //     margin-right: 0;
-    // }
-    // @include screen-768-1279 {
-    //     margin-right: 20px;
-    // }
     @include screen-1279 {
         margin-right: 0;
     }
     .featured-news-wrapper {
-        // width: 41.0416%;
         width: 42.549%;
         height: 56.25vw;
         min-height: 568px;
@@ -297,8 +428,8 @@ export default {
         }
     }
     .other-news-wrapper {
-        // width: 49.5833%;
         width: 52.743%;
+        margin-bottom: 118px;
         @include flex-column-nowrap;
         @include screen-1279 {
             width: 100%;
@@ -390,7 +521,6 @@ export default {
                         }
                     }
                     .photo {
-                        // width: 180px;
                         width: 39.9113%;
                         height: 100%;
                         @include screen-459 {
@@ -410,7 +540,6 @@ export default {
                         }
                     }
                     .info {
-                        // width: 230px;
                         width: 51%;
                         @include flex-column-nowrap;
                         justify-content: space-between;
@@ -441,9 +570,301 @@ export default {
             }
         }
         .main-news {
+            // height: 629px;
+            max-width: 952px;
+            margin-top: 60px;
+            position: relative;
+            @include screen-1279 {
+                margin: 60px 20px 0;
+            }
+            .photo {
+                height: 532px;
+                @include screen-999 {
+                    height: 53.254vw;
+                }
+                @include screen-1280-1919 {
+                    height: 27.7088vw;
+                }
+            }
+            .description {
+                height: 97px;
+                @include flex-column-nowrap;
+                a {
+                    height: 100%;
+                    @include flex-column-nowrap;
+                    justify-content: center;
+                    font-family: "PoppinsMedium", Arial, sans-serif;
+                    font-size: 1.5em;
+                    text-decoration: none;
+                    color: $textColor;
+                    &:hover {
+                        color: $hoveredLink;
+                    }
+                }
+                .date {
+                    font-family: "NunitoRegular", Arial, sans-serif;
+                    color: $greyTextColor;
+                }
+            }
+            .static-label {
+                position: absolute;
+                right: 10px;
+                top: 10px;
+                background-color: $mainWhite;
+                letter-spacing: 2px;
+                padding: 23px 58px;
+                font-family: "NunitoExtraBold", Arial, sans-serif;
+                text-transform: uppercase;
+                font-size: 0.875em;
+                @include screen-767 {
+                    padding: 3.2% 8.5%;
+                }
+            }
         }
-        .all-news {
+        .all-news-slider {
+            margin-top: 60px;
+            @include screen-1279 {
+                margin: 60px 20px 0;
+            }
+            .slider-wrapper {
+                width: 100%;
+                position: relative;
+                .page {
+                    .item-wrapper {
+                        @include flex-row-wrap;
+                        justify-content: space-between;
+                        width: 100%;
+                        @include screen-599 {
+                            justify-content: center;
+                        }
+                        .item {
+                            width: 47.3739%;
+                            min-width: 280px;
+                            margin-bottom: 58px;
+                            .photo {
+                                height: 315px;
+                                @include screen-459 {
+                                    height: 54.375vw;
+                                }
+                                @include screen-460-767 {
+                                    height: 35.407vw;
+                                }
+                                @include screen-768-999 {
+                                    height: 30.407vw;
+                                }
+                                @include screen-1280-1919 {
+                                    height: 16.407vw;
+                                }
+                            }
+                            .description {
+                                height: 132px;
+                                @include screen-1280-1919 {
+                                    height: 6.875vw;
+                                }
+                                @include flex-column-nowrap;
+                                a {
+                                    height: 100%;
+                                    @include flex-column-nowrap;
+                                    justify-content: center;
+                                    font-family: "PoppinsMedium", Arial,
+                                        sans-serif;
+                                    font-size: 1.5em;
+                                    text-decoration: none;
+                                    color: $textColor;
+                                    &:hover {
+                                        color: $hoveredLink;
+                                    }
+                                }
+                                .date {
+                                    font-family: "NunitoRegular", Arial,
+                                        sans-serif;
+                                    color: $greyTextColor;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            .controls {
+                @include flex-row-nowrap;
+                justify-content: space-between;
+                margin-top: 29px;
+                button.inactive {
+                    &:hover {
+                        cursor: default;
+                    }
+                }
+                .inactive {
+                    color: $greyTextColor;
+                }
+                .prev,
+                .next {
+                    @include flex-row-nowrap;
+                    justify-content: space-between;
+                    background: none;
+                    border: none;
+                    outline: none;
+                    font-family: "NunitoExtraBold", Arial, sans-serif;
+                    text-transform: uppercase;
+                    font-size: 0.875em;
+                    letter-spacing: 2px;
+                    &:hover {
+                        cursor: pointer;
+                    }
+                    span,
+                    img {
+                        align-self: center;
+                    }
+                }
+                .prev {
+                    img {
+                        transform: rotate(90deg);
+                        margin-right: 26px;
+                    }
+                }
+                .next {
+                    img {
+                        transform: rotate(-90deg);
+                        margin-left: 26px;
+                    }
+                }
+            }
         }
+    }
+    .clients-wrapper {
+        width: 100%;
+        margin: 0 20px 0 120px;
+        .clients-list {
+            @include flex-row-wrap;
+            justify-content: center;
+            .actor {
+                opacity: 0;
+                width: 25%;
+                min-width: 300px;
+                position: relative;
+                overflow: hidden;
+                @for $i from 1 to 9 {
+                    @if $i < 5 {
+                        @if $i % 2 != 0 {
+                            &:nth-child(#{$i}) {
+                                background-color: $actorBackgroundColor1;
+                            }
+                        } @else {
+                            &:nth-child(#{$i}) {
+                                background-color: $actorBackgroundColor2;
+                            }
+                        }
+                    }
+                    @if $i >= 5 {
+                        @if $i % 2 != 0 {
+                            &:nth-child(#{$i}) {
+                                background-color: $actorBackgroundColor2;
+                            }
+                        } @else {
+                            &:nth-child(#{$i}) {
+                                background-color: $actorBackgroundColor1;
+                            }
+                        }
+                    }
+                }
+                img {
+                    width: 100%;
+                    height: 100%;
+                }
+                .cover.hovered {
+                    bottom: 0;
+                }
+                .cover {
+                    @include flex-column-nowrap;
+                    justify-content: space-between;
+                    position: absolute;
+                    left: 0;
+                    bottom: -100%;
+                    width: calc(100% - 40px);
+                    height: calc(100% - 40px);
+                    padding: 20px;
+                    background-color: $catalogItemCover;
+                    color: $mainWhite;
+                    transition: 0.6s ease-in;
+                    .link {
+                        background-color: $hoveredLink;
+                        border: 1px solid $hoveredLink;
+                        border-radius: 50%;
+                        width: 54px;
+                        height: 54px;
+                        @include flex-row-nowrap;
+                        justify-content: center;
+                        align-self: flex-end;
+                        &:hover {
+                            cursor: pointer;
+                            -webkit-animation: 1s linear 0s infinite alternate
+                                actorLinkAnimation;
+                            -moz-animation: 1s linear 0s infinite alternate
+                                actorLinkAnimation;
+                            -o-animation: 1s linear 0s infinite alternate
+                                actorLinkAnimation;
+                            animation: 1s linear 0s infinite alternate
+                                actorLinkAnimation;
+                        }
+                        img {
+                            width: 14px;
+                        }
+                    }
+                    .info {
+                        text-align: center;
+                        .name {
+                            font-family: "PoppinsRegular", "Arial", sans-serif;
+                            font-size: 1.875em;
+                        }
+                        .description {
+                            font-family: "NunitoExtraBold", "Arial", sans-serif;
+                            font-size: 0.75em;
+                            text-transform: uppercase;
+                            color: $greyTextColor;
+                            padding-bottom: 31px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+// Go to actor buttons
+
+@-webkit-keyframes actorLinkAnimation {
+    from {
+        transform: scale(1);
+    }
+    to {
+        transform: scale(0.7);
+    }
+}
+
+@-moz-keyframes actorLinkAnimation {
+    from {
+        transform: scale(1);
+    }
+    to {
+        transform: scale(0.7);
+    }
+}
+
+@-o-keyframes actorLinkAnimation {
+    from {
+        transform: scale(1);
+    }
+    to {
+        transform: scale(0.7);
+    }
+}
+
+@keyframes actorLinkAnimation {
+    from {
+        transform: scale(1);
+    }
+    to {
+        transform: scale(0.7);
     }
 }
 </style>

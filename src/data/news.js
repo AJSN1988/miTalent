@@ -143,5 +143,115 @@ export default {
             preview: "../static/news/video_news/preview_3.png",
             link: "#"
         }
+    ],
+    allNews: [
+        {
+            id: 20,
+            photo: "../static/news/top3/news_1.png",
+            text:
+                "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laboriosam in aut quam" +
+                "perferendis repellendus itaque ducimus aliquid, architecto facilis perspiciatis?",
+            date: "12 May 2020",
+            link: "#"
+        },
+        {
+            id: 21,
+            photo: "../static/news/top3/news_2.png",
+            text:
+                "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laboriosam in aut quam perferendis.",
+            date: "9 May 2020",
+            link: "#"
+        },
+        {
+            id: 22,
+            photo: "../static/news/top3/news_3.png",
+            text:
+                "Lorem ipsum dolor, amet consectetur adipisicing.",
+            date: "3 May 2020",
+            link: "#"
+        },
+        {
+            id: 23,
+            photo: "../static/news/top3/news_3.png",
+            text:
+                "Lorem ipsum dolor, amet consectetur adipisicing.",
+            date: "3 May 2020",
+            link: "#"
+        },
+        {
+            id: 24,
+            photo: "../static/news/top3/news_2.png",
+            text:
+                "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laboriosam in aut quam perferendis.",
+            date: "9 May 2020",
+            link: "#"
+        },
+        {
+            id: 25,
+            photo: "../static/news/top3/news_1.png",
+            text:
+                "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laboriosam in aut quam" +
+                "perferendis repellendus itaque ducimus aliquid, architecto facilis perspiciatis?",
+            date: "12 May 2020",
+            link: "#"
+        },
+        {
+            id: 26,
+            photo: "../static/news/top3/news_3.png",
+            text:
+                "Lorem ipsum dolor, amet consectetur adipisicing.",
+            date: "3 May 2020",
+            link: "#"
+        },
+        {
+            id: 27,
+            photo: "../static/news/top3/news_2.png",
+            text:
+                "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laboriosam in aut quam perferendis.",
+            date: "9 May 2020",
+            link: "#"
+        },
+        {
+            id: 28,
+            photo: "../static/news/top3/news_1.png",
+            text:
+                "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laboriosam in aut quam" +
+                "perferendis repellendus itaque ducimus aliquid, architecto facilis perspiciatis?",
+            date: "12 May 2020",
+            link: "#"
+        },
+        {
+            id: 29,
+            photo: "../static/news/top3/news_3.png",
+            text:
+                "Lorem ipsum dolor, amet consectetur adipisicing.",
+            date: "3 May 2020",
+            link: "#"
+        },
+        {
+            id: 30,
+            photo: "../static/news/top3/news_3.png",
+            text:
+                "Lorem ipsum dolor, amet consectetur adipisicing.",
+            date: "3 May 2020",
+            link: "#"
+        },
+        {
+            id: 31,
+            photo: "../static/news/top3/news_2.png",
+            text:
+                "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laboriosam in aut quam perferendis.",
+            date: "9 May 2020",
+            link: "#"
+        },
+        {
+            id: 32,
+            photo: "../static/news/top3/news_1.png",
+            text:
+                "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laboriosam in aut quam" +
+                "perferendis repellendus itaque ducimus aliquid, architecto facilis perspiciatis?",
+            date: "12 May 2020",
+            link: "#"
+        }
     ]
 };

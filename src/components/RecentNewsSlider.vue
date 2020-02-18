@@ -148,17 +148,13 @@ export default {
             justify-content: space-evenly;
             .text {
                 font-family: "PoppinsMedium", Arial, sans-serif;
-                // font-size: 1.25vw;
                 font-size: 1.5em;
                 color: $textColor;
                 @include flex-column-nowrap;
                 justify-content: center;
                 height: 100%;
                 a {
-                    &:link,
-                    &:visited {
-                        color: $textColor;
-                    }
+                    color: $textColor;
                     text-decoration: none;
                     &:hover {
                         color: $hoveredLink;
@@ -176,7 +172,7 @@ export default {
         width: 100%;
         bottom: 170px;
         @include screen-767 {
-            bottom: 130px;
+            bottom: 17%;
         }
         z-index: 2;
         .dots-wrapper {
