@@ -172,7 +172,7 @@
             </div>
         </div>
         <div class="clients-wrapper">
-            <div class="info">
+            <div class="clients-info">
                 <div class="clients-header">Our clients</div>
                 <div class="description">
                     <div
@@ -734,11 +734,81 @@ export default {
     .clients-wrapper {
         width: 100%;
         margin: 0 20px 0 120px;
+        @include screen-1279 {
+            margin: 0 20px;
+        }
+        .clients-info {
+            margin-bottom: 120px;
+            @include flex-row-wrap;
+            justify-content: space-between;
+            .clients-header {
+                margin-left: 120px;
+                font-family: "PoppinsRegular", "Arial", sans-serif;
+                font-size: 3.75em;
+                width: 140px;
+                border-bottom: 2px solid $textColor;
+                padding-bottom: 30px;
+                line-height: 1;
+                white-space: nowrap;
+
+                @include screen-999 {
+                    margin-bottom: 60px;
+                }
+                @include screen-1279 {
+                    margin-left: 0;
+                }
+                @include screen-1280-1599 {
+                    margin-left: 0;
+                }
+            }
+            .description {
+                width: 50%;
+                @include flex-column-nowrap;
+                justify-content: space-between;
+                @include screen-999 {
+                    width: 100%;
+                }
+                .text,
+                a > span {
+                    margin-left: 141px;
+                    @include screen-999 {
+                        margin-left: 0;
+                    }
+                }
+                .text {
+                    max-width: 566px;
+                    font-family: "NunitoRegular", "Arial", sans-serif;
+                    color: $greyTextColor;
+                    @include screen-999 {
+                        margin-left: 0;
+                    }
+                }
+                a {
+                    @include flex-row-nowrap;
+                    text-decoration: none;
+                    @include screen-999 {
+                        margin-top: 20px;
+                    }
+                    span {
+                        // margin-left: 141px;
+                        font-family: "NunitoExtraBold", "Arial", sans-serif;
+                        font-size: 0.75em;
+                        text-transform: uppercase;
+                        color: $textColor;
+                        align-self: center;
+                        margin-right: 22px;
+                    }
+                    img {
+                        transform: rotate(90deg);
+                        align-self: center;
+                    }
+                }
+            }
+        }
         .clients-list {
             @include flex-row-wrap;
             justify-content: center;
-            .actor {
-                opacity: 0;
+            .client {
                 width: 25%;
                 min-width: 300px;
                 position: relative;

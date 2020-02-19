@@ -1,5 +1,5 @@
 <template>
-    <section class="home container">
+    <section class="clients container">
         <main-header :options="headerOptions" />
         <top-models :models="models" />
         <actors-catalog :actors="actors" />

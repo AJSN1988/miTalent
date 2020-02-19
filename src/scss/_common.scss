@@ -32,6 +32,10 @@
     font-family: "PlayfairDisplayRegular";
     src: url("../assets/fonts/PlayfairDisplay-Regular.ttf");
 }
+@font-face {
+    font-family: "PlayfairDisplayItalicBold";
+    src: url("../assets/fonts/PlayfairDisplay-BoldItalic.ttf");
+}
 // @font-face {
 //     font-family: "OpenSans";
 //     src: url("../assets/fonts/OpenSans-SemiBold.ttf");
@@ -68,6 +72,8 @@ $menuLinkSMBackground: #b4d3d3;
 $descriptionBackground: #eeeeee;
 $storyBackground1: #e6ecec;
 $storyBackground2: #e2e8e8;
+$aboutAnnotationBackground: #ffffff;
+$aboutDarkBackground: #0d0d0ee6;
 
 @mixin mainBackground {
     background: linear-gradient(270deg, rgba(181,212,212,1) 0%, rgba(216,230,230,1) 100%);

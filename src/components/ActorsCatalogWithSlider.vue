@@ -1,5 +1,5 @@
 <template>
-    <section class="actors-section">
+    <section class="actors-with-slider-section">
         <div class="nav">
             <ul>
                 <li
@@ -11,40 +11,8 @@
                     <div role="button">{{ actor.name }}</div>
                 </li>
             </ul>
-            <ul>
-                <li>
-                    <img
-                        v-if="viewType === 'tiled'"
-                        src="../assets/img/tile_view.svg"
-                        alt="Tile view icon"
-                        width="16"
-                    />
-                    <img
-                        v-if="viewType === 'list'"
-                        src="../assets/img/tile_view_inactive.svg"
-                        alt="Inactive tile view icon"
-                        width="16"
-                        @click="changeViewType('tiled')"
-                    />
-                </li>
-                <li>
-                    <img
-                        v-if="viewType === 'list'"
-                        src="../assets/img/list_view.svg"
-                        alt="List view icon"
-                        width="20"
-                    />
-                    <img
-                        v-if="viewType === 'tiled'"
-                        src="../assets/img/list_view_inactive.svg"
-                        alt="Inactive list view icon"
-                        width="20"
-                        @click="changeViewType('list')"
-                    />
-                </li>
-            </ul>
         </div>
-        <div class="catalog-wrapper tiled">
+        <div class="catalog-wrapper">
             <div
                 v-for="category in actors"
                 :key="category.id"
@@ -52,8 +20,11 @@
                 :class="{ active: activeCatalogId === category.id }"
             >
                 <div
-                    v-for="actor in category.people"
+                    v-for="(actor, index) in category.people"
                     :key="actor.uid"
+                    :style="{
+                        left: `${(index - firstSlideId) * (100 / slidesOnPage)}%`
+                    }"
                     class="actor"
                     @mouseenter="toggleActorCover($event)"
                     @mouseleave="toggleActorCover($event)"
@@ -71,6 +42,24 @@
                 </div>
             </div>
         </div>
+        <div class="slider-controls">
+            <button v-if="sliderPage === 0" class="go-left inactive">
+                <img
+                    src="../assets/img/arrow_down_grey.svg"
+                    alt="Inactive slider control"
+                    width="25"
+                />
+            </button>
+            <button v-if="sliderPage > 0" class="go-left">
+                <img src="../assets/img/arrow_down.svg" alt="Active slider control left" width="25" />
+            </button>
+            <button v-if="sliderPage === slidesOnPage" class="go-right inactive">
+                <img src="../assets/img/arrow_up_grey.svg" alt="Inactive slider control" width="25" />
+            </button>
+            <button v-if="sliderPage < slidesOnPage" class="go-right">
+                <img src="../assets/img/arrow_up.svg" alt="Active slider control left" width="25" />
+            </button>
+        </div>
     </section>
 </template>
 
@@ -86,17 +75,15 @@ export default {
     data() {
         return {
             activeCatalogId: 0,
-            viewType: "tiled"
+            slidesOnPage: 4,
+            sliderPage: 0,
+            firstSlideId: 0
         };
     },
+    mounted() {
+        // this.slidesOnPage = this.actors[this.activeCatalogId].people.length;
+    },
     methods: {
-        changeViewType(type) {
-            this.viewType = type;
-            const prevType = type === "tiled" ? "list" : "tiled";
-            const catalog = document.querySelector(".catalog-wrapper");
-            catalog.classList.remove(prevType);
-            catalog.classList.add(type);
-        },
         setActiveCatalog(id) {
             // Set active catalog id
             if (this.activeCatalogId === id) return false;
@@ -122,8 +109,9 @@ export default {
 
 <style lang="scss" scoped>
 @import "../scss/_common.scss";
-.actors-section {
+.actors-with-slider-section {
     margin: 104px 120px 0;
+    position: relative;
     @include screen-767 {
         margin: 40px 0 0;
     }
@@ -131,11 +119,6 @@ export default {
         margin: 40px 20px 0;
     }
     .nav {
-        @include flex-row-wrap;
-        justify-content: space-between;
-        @include screen-767 {
-            justify-content: center;
-        }
         ul {
             @include flex-row-wrap;
             justify-content: center;
@@ -144,14 +127,12 @@ export default {
             font-size: 0.75em;
             text-transform: uppercase;
             color: $navLinkColor;
-            margin: 0;
+            margin: auto;
             padding: 0;
+            width: fit-content;
             @include screen-459 {
-                @include flex-column-nowrap;
-            }
-
-            @include screen-767 {
                 width: 100%;
+                flex-direction: column;
             }
             li.active {
                 color: $textColor;
@@ -173,22 +154,15 @@ export default {
                     align-self: center;
                 }
             }
-            &:last-child {
-                align-self: center;
-                width: 97px;
-                justify-content: space-between;
-                flex-direction: row;
-                @include screen-767 {
-                    margin-top: 40px;
-                }
-                li {
-                    align-self: center;
-                }
-            }
         }
     }
-    .catalog-wrapper.tiled {
+    .catalog-wrapper {
         margin: 82px 0 0;
+        z-index: 1;
+        height: 490px;
+        position: relative;
+        overflow: hidden;
+
         @include screen-459 {
             margin: 22px 0 0;
         }
@@ -199,7 +173,9 @@ export default {
             margin: 40px 40px 0;
         }
         .catalog.active {
-            height: 100%;
+            height: 490px;
+            position: relative;
+            overflow: hidden;
             .actor {
                 opacity: 1;
                 @for $i from 0 to 9 {
@@ -207,7 +183,8 @@ export default {
                         @if $i == 0 {
                             transition: 0.3s ease-in;
                         } @else {
-                            transition: opacity $i * 0.18s ease-in;
+                            transition: opacity $i * 0.18s ease-in,
+                                left 0.7s linear;
                         }
                     }
                 }
@@ -215,14 +192,19 @@ export default {
         }
         .catalog {
             height: 0;
-            @include flex-row-wrap;
-            justify-content: center;
-            overflow: hidden;
+            // @include flex-row-wrap;
+            // justify-content: center;
+            // overflow: hidden;
+
             .actor {
                 opacity: 0;
                 width: 25%;
-                min-width: 300px;
-                position: relative;
+                // min-width: 300px;
+                // position: relative;
+                position: absolute;
+                // left: 0;
+                transition: left 0.7s linear;
+                //
                 overflow: hidden;
                 @for $i from 1 to 9 {
                     @if $i < 5 {
@@ -309,139 +291,21 @@ export default {
             }
         }
     }
-    .catalog-wrapper.list {
-        margin: 82px 0 0;
-        @include screen-1279 {
-            margin: 40px 20px 0;
-        }
-        .catalog.active {
-            @include flex-row-wrap;
-            height: 100%;
-            .actor {
-                opacity: 1;
-                @for $i from 0 to 9 {
-                    &:nth-child(#{$i}) {
-                        @if $i == 0 {
-                            transition: 0.3s ease-in;
-                        } @else {
-                            transition: opacity $i * 0.18s ease-in;
-                        }
-                    }
-                }
-                img {
-                    width: 300px;
-                    @include screen-767 {
-                        width: 100%;
-                    }
-                }
-            }
-        }
-        .catalog:not(.active) {
-            height: 0;
-            overflow: hidden;
-            .actor {
-                opacity: 0;
-            }
-        }
-        .actor {
-            width: calc(50% - 20px);
-            @include screen-767 {
-                flex-wrap: wrap;
-                margin-bottom: 20px;
-            }
-            @include screen-1279 {
-                width: 100%;
-            }
-            margin-bottom: 40px;
-            flex-grow: 1;
-            @include flex-row-nowrap;
-            justify-content: space-between;
-            @include screen-1280-1919 {
-                min-width: 750px;
-            }
-            &:nth-last-child(odd) {
-                margin-left: 20px;
-                @include screen-1779 {
-                    margin-left: 0;
-                }
-                .actor-photo {
-                    background-color: $actorBackgroundColor1;
-                }
-            }
-            &:nth-last-child(even) {
-                margin-right: 20px;
-                @include screen-1779 {
-                    margin-right: 0;
-                }
-                .actor-photo {
-                    background-color: $actorBackgroundColor2;
-                }
-            }
-            .actor-photo {
-                flex-grow: 1;
-            }
-            .cover {
-                width: 100%;
-                background-color: $catalogItemCover;
-                @include flex-row-nowrap;
-                justify-content: space-between;
-
-                @include screen-999 {
-                    flex-direction: column;
-                }
-                .link {
-                    background-color: $hoveredLink;
-                    border: 1px solid $hoveredLink;
-                    border-radius: 50%;
-                    width: 65px;
-                    height: 65px;
-                    @include flex-row-nowrap;
-                    justify-content: center;
-                    align-self: flex-start;
-                    order: 1;
-                    margin: 40px;
-                    @include screen-999 {
-                        margin: 20px;
-                        align-self: flex-end;
-                    }
-                    &:hover {
-                        cursor: pointer;
-                        -webkit-animation: 1s linear 0s infinite alternate
-                            actorLinkAnimation;
-                        -moz-animation: 1s linear 0s infinite alternate
-                            actorLinkAnimation;
-                        -o-animation: 1s linear 0s infinite alternate
-                            actorLinkAnimation;
-                        animation: 1s linear 0s infinite alternate
-                            actorLinkAnimation;
-                    }
-                    img {
-                        width: 14px;
-                    }
-                }
-                .info {
-                    align-self: center;
-                    padding-left: 40px;
-                    @include screen-767 {
-                        padding-left: 0;
-                        padding-top: 20px;
-                    }
-                    @include screen-768-999 {
-                        padding-left: 0;
-                        padding-top: 144px;
-                    }
-                    .name {
-                        font-family: "PoppinsRegular", "Arial", sans-serif;
-                        font-size: 1.875em;
-                        color: $mainWhite;
-                    }
-                    .description {
-                        font-family: "NunitoExtraBold", "Arial", sans-serif;
-                        font-size: 0.75em;
-                        text-transform: uppercase;
-                        color: $greyTextColor;
-                    }
-                }
+    .slider-controls {
+        position: absolute;
+        bottom: 220px;
+        width: calc(100% + 160px);
+        left: -80px;
+        @include flex-row-nowrap;
+        justify-content: space-between;
+        .go-left,
+        .go-right {
+            background: none;
+            border: none;
+            outline: none;
+            transform: rotate(90deg);
+            &:hover {
+                cursor: pointer;
             }
         }
     }
