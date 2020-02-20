@@ -1,6 +1,7 @@
 <template>
     <section class="clients container">
         <main-header :options="headerOptions" />
+        <side-menu />
         <top-models :models="models" />
         <actors-catalog :actors="actors" />
         <stories :stories="stories" />
@@ -23,6 +24,7 @@ import StoriesData from "../data/twitter";
 import NewsData from "../data/news";
 
 import MainHeader from "../components/Header.vue";
+import SideMenu from "../components/SideMenu.vue";
 import TopModels from "../components/TopModelsClients.vue";
 import ActorsCatalog from "../components/ActorsCatalog.vue";
 import Stories from "../components/Stories.vue";
@@ -30,9 +32,10 @@ import LatestNews from "../components/HotNews.vue";
 import AppFooter from "../components/AppFooter.vue";
 
 export default {
-    name: "ClientsComponent",
+    name: "ClientsPageComponent",
     components: {
         MainHeader,
+        SideMenu,
         TopModels,
         ActorsCatalog,
         Stories,

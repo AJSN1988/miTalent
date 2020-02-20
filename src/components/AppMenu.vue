@@ -7,7 +7,11 @@
                 class="item"
                 :style="{ background: `url('${item.photo}') scroll no-repeat center center` }"
             >
-                <div class="link" role="link" @click="linkClickHandler(item.link)">{{ item.name }}</div>
+                <div
+                    class="link"
+                    role="link"
+                    @click="linkClickHandler('link', item.link)"
+                >{{ item.name }}</div>
                 <div class="cover" />
             </div>
             <div class="close item">
@@ -16,7 +20,7 @@
                     role="link"
                     @mouseenter="toggleCloseButton($event)"
                     @mouseleave="toggleCloseButton($event)"
-                    @click="linkClickHandler('close')"
+                    @click="linkClickHandler('close', null)"
                 >
                     Close
                     <hr />
@@ -35,11 +39,22 @@ export default {
             required: true
         }
     },
+    data() {
+        return {
+            lockMenu: false
+        };
+    },
     methods: {
-        linkClickHandler(action) {
+        linkClickHandler(action, routeName) {
+            if (this.lockMenu) return false;
             if (action === "close") {
                 this.$store.commit("toggleMenu");
+                return false;
             }
+            this.$store.commit("toggleMenu");
+            setTimeout(() => {
+                this.$router.push(routeName);
+            }, 500);
         },
         toggleCloseButton(e) {
             const hr = e.target.querySelector("hr");
@@ -131,6 +146,7 @@ export default {
                     transition: 0.5s ease-in;
                     @include screen-h-799 {
                         background-color: $menuLinkSMBackground;
+                        padding: 16px 0;
                     }
                     &:hover {
                         letter-spacing: 4.5px;

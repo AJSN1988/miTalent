@@ -152,6 +152,12 @@ $aboutDarkBackground: #0d0d0ee6;
     }
 }
 
+@mixin screen-1600-1919 {
+    @media screen and (min-width: 1600px) and (max-width: 1919px) {
+        @content;
+    }
+}
+
 // 2.3 Min width
 
 @mixin  screen-min-1280 {

@@ -1,6 +1,7 @@
 <template>
     <section class="home container">
         <main-header :options="headerOptions" />
+        <side-menu />
         <top-models :models="modelsForTopList" />
         <short-actors-catalog :actors-catalog="shortActorsCatalog" />
         <latest-news :news="news" />
@@ -17,15 +18,17 @@ import Actors from "../data/actors";
 import News from "../data/news";
 
 import MainHeader from "../components/Header.vue";
+import SideMenu from "../components/SideMenu.vue";
 import TopModels from "../components/TopModels.vue";
 import ShortActorsCatalog from "../components/ShortActorsCatalog.vue";
 import LatestNews from "../components/LatestNews.vue";
 import AppFooter from "../components/AppFooter.vue";
 
 export default {
-    name: "HomeComponent",
+    name: "HomePageComponent",
     components: {
         MainHeader,
+        SideMenu,
         TopModels,
         ShortActorsCatalog,
         LatestNews,

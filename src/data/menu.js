@@ -25,110 +25,110 @@ export default {
         home: [
             {
                 name: "News",
-                link: "news",
+                link: "News",
                 photo: "../static/menu/news.png"
             },
             {
                 name: "Clients",
-                link: "clients",
+                link: "Clients",
                 photo: "../static/menu/clients.png"
             },
             {
                 name: "About",
-                link: "about",
+                link: "About",
                 photo: "../static/menu/about.png"
             },
             {
                 name: "Contacts",
-                link: "contacts",
+                link: "Contacts",
                 photo: "../static/menu/contacts.png"
             }
         ],
         clients: [
             {
                 name: "Home",
-                link: "home",
+                link: "/",
                 photo: "../static/menu/home.png"
             },
             {
                 name: "News",
-                link: "news",
+                link: "News",
                 photo: "../static/menu/news.png"
             },
             {
                 name: "About",
-                link: "about",
+                link: "About",
                 photo: "../static/menu/about.png"
             },
             {
                 name: "Contacts",
-                link: "contacts",
+                link: "Contacts",
                 photo: "../static/menu/contacts.png"
             }
         ],
         news: [
             {
                 name: "Home",
-                link: "home",
+                link: "/",
                 photo: "../static/menu/home.png"
             },
             {
                 name: "Clients",
-                link: "clients",
+                link: "Clients",
                 photo: "../static/menu/clients.png"
             },
             {
                 name: "About",
-                link: "about",
+                link: "About",
                 photo: "../static/menu/about.png"
             },
             {
                 name: "Contacts",
-                link: "contacts",
+                link: "Contacts",
                 photo: "../static/menu/contacts.png"
             }
         ],
         about: [
             {
                 name: "Home",
-                link: "home",
+                link: "/",
                 photo: "../static/menu/home.png"
             },
             {
                 name: "News",
-                link: "news",
+                link: "News",
                 photo: "../static/menu/news.png"
             },
             {
                 name: "Clients",
-                link: "clients",
+                link: "Clients",
                 photo: "../static/menu/clients.png"
             },
             {
                 name: "Contacts",
-                link: "contacts",
+                link: "Contacts",
                 photo: "../static/menu/contacts.png"
             }
         ],
         contacts: [
             {
                 name: "Home",
-                link: "home",
+                link: "/",
                 photo: "../static/menu/home.png"
             },
             {
                 name: "News",
-                link: "news",
+                link: "News",
                 photo: "../static/menu/news.png"
             },
             {
                 name: "Clients",
-                link: "clients",
+                link: "Clients",
                 photo: "../static/menu/clients.png"
             },
             {
                 name: "About",
-                link: "about",
+                link: "About",
                 photo: "../static/menu/about.png"
             }
         ]

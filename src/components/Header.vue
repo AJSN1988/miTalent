@@ -91,7 +91,7 @@ export default {
             border-bottom: 2px solid #000000;
             width: 20px;
             transition: 0.3s ease-in;
-            &:not(:nth-child(3)) {
+            &:not(:last-child) {
                 margin-bottom: 5px;
             }
         }

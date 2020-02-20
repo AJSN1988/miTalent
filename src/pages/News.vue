@@ -1,6 +1,7 @@
 <template>
     <section class="news container">
         <news-header :options="headerOptions" />
+        <side-menu />
         <news :news="news" />
         <div class="footer">
             <app-footer />
@@ -13,13 +14,15 @@ import MenuData from "../data/menu";
 import NewsData from "../data/news";
 
 import NewsHeader from "../components/NewsHeader.vue";
+import SideMenu from "../components/SideMenu.vue";
 import News from "../components/News.vue";
 import AppFooter from "../components/AppFooter.vue";
 
 export default {
-    name: "NewsComponent",
+    name: "NewsPageComponent",
     components: {
         NewsHeader,
+        SideMenu,
         News,
         AppFooter
     },

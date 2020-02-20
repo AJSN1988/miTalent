@@ -1,8 +1,8 @@
 <template>
-    <section class="about container">
+    <section class="contacts container">
         <main-header :options="headerOptions" />
         <side-menu />
-        <about-main />
+        <contacts-main />
         <div class="footer">
             <app-footer />
         </div>
@@ -14,22 +14,22 @@ import MenuData from "../data/menu";
 
 import MainHeader from "../components/Header.vue";
 import SideMenu from "../components/SideMenu.vue";
+import ContactsMain from "../components/Contacts.vue";
 import AppFooter from "../components/AppFooter.vue";
-import AboutMain from "../components/AboutMainInfo.vue";
 
 export default {
-    name: "AboutPageComponent",
+    name: "ContactsPageComponent",
     components: {
         MainHeader,
         SideMenu,
-        AboutMain,
+        ContactsMain,
         AppFooter
     },
     data() {
         return {
             headerOptions: {
                 navLinks: MenuData.linksOnTopNav.home,
-                menuItems: MenuData.menuItems.about,
+                menuItems: MenuData.menuItems.contacts,
                 colors: {
                     idle: "#1a1a1d",
                     hover: "#b4d3d3"
