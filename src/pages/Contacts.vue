@@ -31,8 +31,9 @@ export default {
                 navLinks: MenuData.linksOnTopNav.home,
                 menuItems: MenuData.menuItems.contacts,
                 colors: {
-                    idle: "#1a1a1d",
-                    hover: "#b4d3d3"
+                    idle: "#ffffff",
+                    hover: "#98cccc",
+                    menuColor: "#ffffff"
                 }
             }
         };

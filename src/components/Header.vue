@@ -1,9 +1,9 @@
 <template>
     <header class="header">
         <button class="burger-menu" @click="openMenu($event)">
-            <span />
-            <span />
-            <span />
+            <span :style="navLinksStyle" />
+            <span :style="navLinksStyle" />
+            <span :style="navLinksStyle" />
         </button>
         <nav class="horisontal-nav">
             <ul>
@@ -48,7 +48,10 @@ export default {
         navLinksStyle() {
             return {
                 "--color": this.$props.options.colors.idle,
-                "--color-hover": this.$props.options.colors.hover
+                "--color-hover": this.$props.options.colors.hover,
+                "--menu-color": this.$props.options.colors.menuColor
+                    ? this.$props.options.colors.menuColor
+                    : "#000000"
             };
         }
     },
@@ -88,7 +91,7 @@ export default {
         }
         span {
             display: block;
-            border-bottom: 2px solid #000000;
+            border-bottom: 2px solid var(--menu-color);
             width: 20px;
             transition: 0.3s ease-in;
             &:not(:last-child) {

@@ -266,6 +266,7 @@ export default {
             margin: auto;
             .actor {
                 opacity: 1;
+                z-index: 1;
                 @for $i from 0 to 9 {
                     &:nth-child(#{$i}) {
                         @if $i == 0 {

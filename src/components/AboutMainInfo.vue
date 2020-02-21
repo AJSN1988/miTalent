@@ -293,13 +293,10 @@ export default {
                 .content {
                     padding-left: 20.966%;
                     padding-top: 29.639%;
-                    // padding-left: 191px;
-                    // padding-top: 270px;
                     width: 63.228%;
                     max-width: 767px;
                     @include flex-column-nowrap;
                     justify-content: space-between;
-                    // height: calc(100% - 270px);
                     height: 75%;
                     @include screen-767 {
                         width: calc(100% - 40px);
@@ -323,7 +320,6 @@ export default {
                         }
                         .about-content {
                             p {
-                                // margin: 8.683% 0;
                                 margin: 50px 0;
                                 font-family: "NunitoRegular", Arial, sans-serif;
                                 color: $darkGreytextColor;
@@ -332,7 +328,6 @@ export default {
                     }
                     .content-tail {
                         height: 35.31%;
-                        // height: 286px;
                         background-color: $aboutDarkBackground;
                         @include flex-column-nowrap;
                         justify-content: center;
@@ -361,8 +356,5 @@ export default {
             }
         }
     }
-    // .actors-wrapper {
-    //     margin: 120px 61px 0;
-    // }
 }
 </style>
