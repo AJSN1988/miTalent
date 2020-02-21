@@ -4,7 +4,7 @@
             <div
                 class="contacts-part"
                 :style="{
-                    background: `url('../static/about_background.png')`,
+                    background: `url('./static/about_background.png')`,
                     backgroundSize: 'cover',
                     backgroundPosition: 'center'
                 }"

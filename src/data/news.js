@@ -2,7 +2,7 @@ export default {
     hotNews: [
         {
             id: 1,
-            photo: "../static/news/top3/news_1.png",
+            photo: "./static/news/top3/news_1.png",
             text:
                 "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laboriosam in aut quam" +
                 "perferendis repellendus itaque ducimus aliquid, architecto facilis perspiciatis?",
@@ -11,7 +11,7 @@ export default {
         },
         {
             id: 2,
-            photo: "../static/news/top3/news_2.png",
+            photo: "./static/news/top3/news_2.png",
             text:
                 "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laboriosam in aut quam perferendis.",
             date: "9 May 2020",
@@ -19,7 +19,7 @@ export default {
         },
         {
             id: 3,
-            photo: "../static/news/top3/news_3.png",
+            photo: "./static/news/top3/news_3.png",
             text:
                 "Lorem ipsum dolor, amet consectetur adipisicing.",
             date: "3 May 2020",
@@ -27,7 +27,7 @@ export default {
         },
         {
             id: 13,
-            photo: "../static/news/top3/news_3.png",
+            photo: "./static/news/top3/news_3.png",
             text:
                 "Lorem ipsum dolor, amet consectetur adipisicing.",
             date: "3 May 2020",
@@ -35,7 +35,7 @@ export default {
         },
         {
             id: 14,
-            photo: "../static/news/top3/news_2.png",
+            photo: "./static/news/top3/news_2.png",
             text:
                 "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laboriosam in aut quam perferendis.",
             date: "9 May 2020",
@@ -43,7 +43,7 @@ export default {
         },
         {
             id: 15,
-            photo: "../static/news/top3/news_1.png",
+            photo: "./static/news/top3/news_1.png",
             text:
                 "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laboriosam in aut quam" +
                 "perferendis repellendus itaque ducimus aliquid, architecto facilis perspiciatis?",
@@ -53,7 +53,7 @@ export default {
     ],
     mainNews: {
         id: 4,
-        photo: "../static/news/main_news.png",
+        photo: "./static/news/main_news.png",
         text: "Lorem ipsum dolor, sit amet consectetur.",
         date: "1 May 2020",
         link: "#"
@@ -61,21 +61,21 @@ export default {
     featuredNews: [
         {
             id: 16,
-            photo: "../static/news/featured_news_3.png",
+            photo: "./static/news/featured_news_3.png",
             text: "A starter guide to self improvement 1",
             date: "22 May 2020",
             link: "#"
         },
         {
             id: 17,
-            photo: "../static/news/featured_news_2.png",
+            photo: "./static/news/featured_news_2.png",
             text: "A starter guide to self improvement 2",
             date: "23 May 2020",
             link: "#"
         },
         {
             id: 18,
-            photo: "../static/news/featured_news.png",
+            photo: "./static/news/featured_news.png",
             text: "A starter guide to self improvement 3",
             date: "24 May 2020",
             link: "#"
@@ -85,7 +85,7 @@ export default {
         {
             id: 5,
             photo:
-                "../static/news/news_slider-on_homepage/news_1.png",
+                "./static/news/news_slider-on_homepage/news_1.png",
             text:
                 "Motivation And Your Personal Vision An Unbeatable Force 1",
             date: "14 March 2020",
@@ -94,7 +94,7 @@ export default {
         {
             id: 6,
             photo:
-                "../static/news/news_slider-on_homepage/news_2.png",
+                "./static/news/news_slider-on_homepage/news_2.png",
             text:
                 "Motivation And Your Personal Vision An Unbeatable Force 2",
             date: "15 March 2020",
@@ -103,7 +103,7 @@ export default {
         {
             id: 7,
             photo:
-                "../static/news/news_slider-on_homepage/news_3.png",
+                "./static/news/news_slider-on_homepage/news_3.png",
             text:
                 "Motivation And Your Personal Vision An Unbeatable Force 3",
             date: "13 March 2020",
@@ -112,7 +112,7 @@ export default {
         {
             id: 8,
             photo:
-                "../static/news/news_slider-on_homepage/news_4.png",
+                "./static/news/news_slider-on_homepage/news_4.png",
             text:
                 "Motivation And Your Personal Vision An Unbeatable Force 4",
             date: "12 March 2020",
@@ -130,24 +130,24 @@ export default {
     videoNewsSlider: [
         {
             id: 10,
-            preview: "../static/news/video_news/preview_1.png",
+            preview: "./static/news/video_news/preview_1.png",
             link: "#"
         },
         {
             id: 11,
-            preview: "../static/news/video_news/preview_2.png",
+            preview: "./static/news/video_news/preview_2.png",
             link: "#"
         },
         {
             id: 12,
-            preview: "../static/news/video_news/preview_3.png",
+            preview: "./static/news/video_news/preview_3.png",
             link: "#"
         }
     ],
     allNews: [
         {
             id: 20,
-            photo: "../static/news/top3/news_1.png",
+            photo: "./static/news/top3/news_1.png",
             text:
                 "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laboriosam in aut quam" +
                 "perferendis repellendus itaque ducimus aliquid, architecto facilis perspiciatis?",
@@ -156,7 +156,7 @@ export default {
         },
         {
             id: 21,
-            photo: "../static/news/top3/news_2.png",
+            photo: "./static/news/top3/news_2.png",
             text:
                 "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laboriosam in aut quam perferendis.",
             date: "9 May 2020",
@@ -164,7 +164,7 @@ export default {
         },
         {
             id: 22,
-            photo: "../static/news/top3/news_3.png",
+            photo: "./static/news/top3/news_3.png",
             text:
                 "Lorem ipsum dolor, amet consectetur adipisicing.",
             date: "3 May 2020",
@@ -172,7 +172,7 @@ export default {
         },
         {
             id: 23,
-            photo: "../static/news/top3/news_3.png",
+            photo: "./static/news/top3/news_3.png",
             text:
                 "Lorem ipsum dolor, amet consectetur adipisicing.",
             date: "3 May 2020",
@@ -180,7 +180,7 @@ export default {
         },
         {
             id: 24,
-            photo: "../static/news/top3/news_2.png",
+            photo: "./static/news/top3/news_2.png",
             text:
                 "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laboriosam in aut quam perferendis.",
             date: "9 May 2020",
@@ -188,7 +188,7 @@ export default {
         },
         {
             id: 25,
-            photo: "../static/news/top3/news_1.png",
+            photo: "./static/news/top3/news_1.png",
             text:
                 "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laboriosam in aut quam" +
                 "perferendis repellendus itaque ducimus aliquid, architecto facilis perspiciatis?",
@@ -197,7 +197,7 @@ export default {
         },
         {
             id: 26,
-            photo: "../static/news/top3/news_3.png",
+            photo: "./static/news/top3/news_3.png",
             text:
                 "Lorem ipsum dolor, amet consectetur adipisicing.",
             date: "3 May 2020",
@@ -205,7 +205,7 @@ export default {
         },
         {
             id: 27,
-            photo: "../static/news/top3/news_2.png",
+            photo: "./static/news/top3/news_2.png",
             text:
                 "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laboriosam in aut quam perferendis.",
             date: "9 May 2020",
@@ -213,7 +213,7 @@ export default {
         },
         {
             id: 28,
-            photo: "../static/news/top3/news_1.png",
+            photo: "./static/news/top3/news_1.png",
             text:
                 "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laboriosam in aut quam" +
                 "perferendis repellendus itaque ducimus aliquid, architecto facilis perspiciatis?",
@@ -222,7 +222,7 @@ export default {
         },
         {
             id: 29,
-            photo: "../static/news/top3/news_3.png",
+            photo: "./static/news/top3/news_3.png",
             text:
                 "Lorem ipsum dolor, amet consectetur adipisicing.",
             date: "3 May 2020",
@@ -230,7 +230,7 @@ export default {
         },
         {
             id: 30,
-            photo: "../static/news/top3/news_3.png",
+            photo: "./static/news/top3/news_3.png",
             text:
                 "Lorem ipsum dolor, amet consectetur adipisicing.",
             date: "3 May 2020",
@@ -238,7 +238,7 @@ export default {
         },
         {
             id: 31,
-            photo: "../static/news/top3/news_2.png",
+            photo: "./static/news/top3/news_2.png",
             text:
                 "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laboriosam in aut quam perferendis.",
             date: "9 May 2020",
@@ -246,7 +246,7 @@ export default {
         },
         {
             id: 32,
-            photo: "../static/news/top3/news_1.png",
+            photo: "./static/news/top3/news_1.png",
             text:
                 "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laboriosam in aut quam" +
                 "perferendis repellendus itaque ducimus aliquid, architecto facilis perspiciatis?",

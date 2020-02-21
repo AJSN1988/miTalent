@@ -4,7 +4,7 @@
             <div
                 class="directions-part"
                 :style="{
-                    background: `url('../static/contacts_background.png')`,
+                    background: `url('./static/contacts_background.png')`,
                     backgroundSize: 'cover',
                     backgroundPosition: 'center'
                 }"

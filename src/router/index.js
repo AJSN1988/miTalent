@@ -35,6 +35,6 @@ export default new Router({
             name: "ContactsPage",
             component: Contacts
         }
-    ],
-    mode: "history"
+    ]
+    // mode: "history" // Add this mode in prod env
 });

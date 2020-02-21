@@ -102,14 +102,14 @@ const config = {
                 quality: 65
               },
               optipng: {
-                enabled: false,
+                enabled: true
               },
               pngquant: {
-                quality: '65-90',
+                quality: '30-50',
                 speed: 4
               },
               gifsicle: {
-                interlaced: false,
+                interlaced: false
               }
             }
           }

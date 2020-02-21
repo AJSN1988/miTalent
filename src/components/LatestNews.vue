@@ -21,9 +21,14 @@
                 </div>
                 <div class="bottom-container">
                     <div class="regular-news">
-                        <div class="photo">
-                            <img :src="news.regularNews.photo" alt="Regular news photo" />
-                        </div>
+                        <div
+                            class="photo"
+                            :style="{
+                                background: `url(${news.regularNews.photo})`,
+                                backgroundSize: 'cover',
+                                backgroundPosition: 'canter'
+                            }"
+                        />
                         <div class="description">
                             <div class="text">
                                 <a :href="news.regularNews.link">{{ news.regularNews.text }}</a>
@@ -185,6 +190,7 @@ export default {
                 }
                 .regular-news {
                     width: calc(50% - 25px);
+                    min-height: 238px;
                     @include flex-column-nowrap;
                     @include screen-767 {
                         width: 100%;
@@ -192,16 +198,17 @@ export default {
                     @include screen-768-999 {
                         width: calc(50% - 10px);
                     }
+
                     .photo {
                         max-height: 286px;
                         height: 14.8958vw;
-                        @include screen-999 {
-                            height: auto;
+                        @include screen-767 {
+                            min-height: 55.019vw;
                         }
-                        img {
-                            width: 100%;
-                            height: 100%;
+                        @include screen-768-999 {
+                            min-height: 170px;
                         }
+                        flex: 1;
                     }
                     .description {
                         height: 7.0833vw;

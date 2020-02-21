@@ -14,7 +14,8 @@
                 class="photo"
                 :style="{
                     background: `no-repeat url(${slide.photo})`,
-                    backgroundSize: 'cover'
+                    backgroundSize: 'cover',
+                    backgroundPositino: 'center'
                 }"
             />
             <div class="description">
@@ -94,7 +95,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @import "../scss/_common.scss";
 
 .news-slider-section {
@@ -170,9 +171,9 @@ export default {
     .nav-dots {
         position: absolute;
         width: 100%;
-        bottom: 170px;
-        @include screen-767 {
-            bottom: 17%;
+        bottom: 176px;
+        @include screen-999 {
+            bottom: 150px;
         }
         z-index: 2;
         .dots-wrapper {

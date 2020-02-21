@@ -2,7 +2,7 @@
     <section
         class="stories-section"
         :style="{
-            background: `url('../static/stories/1_mbg.png')`,
+            background: `url('./static/stories/1_mbg.png')`,
             backgroundSize: '75%' ,
             backgroundPosition: 'right 0% top 0%',
             backgroundRepeat: 'no-repeat' }"
@@ -150,7 +150,7 @@
             <div
                 class="tail"
                 :style="{
-                    background: `url('../static/stories/1_smbg.png')`
+                    background: `url('./static/stories/1_smbg.png')`
                 }"
             />
         </div>
